@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper  namespace="com.example.demo.Staff.Mappers.StaffMapper"   >
+    <insert id="Create" >
+        insert  into staff (username,nickname,job,groupname,phonenumber)
+        values(#{staff.username},#{staff.nickname}, #{staff.job},#{staff.groupname},#{staff.phonenumber}  )
+
+    </insert>
+
+    <select id="CountStaffExsit" resultType="int">
+        SELECT count(*) FROM staff where username =#{staff.username} or nickname = #{staff.nickname};
+    </select>
+
+
+
+    <select id="All" resultType="com.example.demo.Staff.entitys.Staff">
+        SELECT * FROM staff
+    <if test="keyword!=null">
+--         where nickname like '%${keyword}%' 这里面的like是模糊查询的意思
+         where nickname like '%${keyword}%'
+    </if>
+;
+    </select>
+
+    <select id="pageQueryByKeyword" resultType="com.example.demo.Staff.entitys.Staff">
+        SELECT * FROM staff
+        <if test="keyword!=null">
+            where nickname like '%${keyword}%'
+        </if>
+       limit ${page*pagesize},#{pagesize}  ;
+    </select>
+
+    <select id="pageQueryByKeywordCount" resultType="int">
+        SELECT Count(*) FROM staff
+        <if test="keyword!=null">
+            where nickname like '%${keyword}%'
+        </if>
+         ;
+    </select>
+
+<!--     查出不在值班人员列表中的用户-->
+<!--    SELECT  user.* FROM springboot.user  left join springboot.staff   on staff.userId=user.id  where  staff.userId is null;-->
+    <select id="queryNotStaffUser" resultType="com.example.demo.passport.entitys.User" >
+        SELECT user.* FROM springboot.user left join springboot.staff  on staff.userId =  user.id   where  staff.userId   is null  ;
+
+    </select>
+
+    <delete id="DeleteById">
+        delete
+        from staff
+        where id =#{id};
+    </delete>
+
+
+    <update id="DisableById">
+        UPDATE staff SET status = #{ enable } WHERE id = #{id};
+
+    </update>
+
+
+
+
+
+
+</mapper>

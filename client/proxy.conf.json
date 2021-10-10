@@ -1,0 +1,7 @@
+{
+    "/api":{
+        "target":"http://localhost",
+        "target2":"http://192.168.1.16",
+        "changeOrigin":true
+    }
+}

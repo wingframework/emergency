@@ -1,0 +1,11 @@
+export * from './basicErrorController.service';
+import { BasicErrorControllerService } from './basicErrorController.service';
+export * from './indexController.service';
+import { IndexControllerService } from './indexController.service';
+export * from './staffController.service';
+import { StaffControllerService } from './staffController.service';
+export * from './testController.service';
+import { TestControllerService } from './testController.service';
+export * from './userController.service';
+import { UserControllerService } from './userController.service';
+export const APIS = [BasicErrorControllerService, IndexControllerService, StaffControllerService, TestControllerService, UserControllerService];

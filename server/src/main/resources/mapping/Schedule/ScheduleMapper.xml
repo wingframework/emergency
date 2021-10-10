@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.Staff.Mappers.ScheduleMapper">
+<!--    <insert id="Create" >-->
+<!--        insert  into staff (username,nickname,job,groupname,phonenumber)-->
+<!--        values(#{staff.username},#{staff.nickname}, #{staff.job},#{staff.groupname},#{staff.phonenumber}  )-->
+
+<!--    </insert>-->
+
+
+
+    <insert id="Create" >
+        insert  into schedule (leaderStaffId,peopleStaffId,classes,date,createAt,lastUpdateAt)
+        values(#{morningSchedule.leaderStaffId},#{morningSchedule.peopleStaffId}, #{morningSchedule.classes} ,#{date},#{morningSchedule.createAt},#{morningSchedule.lastUpdateAt });
+
+        insert  into schedule (leaderStaffId,peopleStaffId,classes,date,createAt,lastUpdateAt)
+        values(#{noonSchedule.leaderStaffId},#{noonSchedule.peopleStaffId}, #{noonSchedule.classes} ,#{date},#{noonSchedule.createAt},#{noonSchedule.lastUpdateAt });
+
+         insert  into schedule (leaderStaffId,peopleStaffId,classes,date,createAt,lastUpdateAt)
+        values(#{nightSchedule.leaderStaffId},#{nightSchedule.peopleStaffId}, #{nightSchedule.classes} ,#{date},#{nightSchedule.createAt},#{nightSchedule.lastUpdateAt })
+
+
+
+    </insert>
+
+<!--    值班人数显示出来-->
+    <select id="" resultType="int">
+        SELECT count(*) FROM schedule where leaderStaffId = #{morningSchedule.leaderStaffId},peopleStaffId = #{ morningSchedule.peopleStaffId};
+    </select>
+
+
+<!--    <select id="CountUserExsit" resultType="int">-->
+<!--        SELECT count(*) FROM user where phonenumber =#{user.phonenumber} or username = #{user.username};-->
+<!--    </select>-->
+
+
+
+</mapper>
