@@ -1,0 +1,32 @@
+<div style="text-align: right;">
+    <toml-case-menu [nodes]="nodes" *ngIf="nodes" (OnSelectNode)="selectNode($event)"></toml-case-menu>
+</div>
+
+
+<nz-tabset>
+    <nz-tab [nzTitle]="title">
+        <ng-container *ngIf="body">
+
+            <div>
+                <nz-radio-group [(ngModel)]="uiType">
+                    <label nz-radio-button [nzValue]="UiType.AntDeisgn">AntDeisgn</label>
+                    <label nz-radio-button [nzValue]="UiType.Amis">Amis</label>
+                </nz-radio-group>
+            </div>
+
+            <dynamic-ui [body]="body" *ngIf="uiType==UiType.AntDeisgn"></dynamic-ui>
+            <amis-sample [json]="body" *ngIf="uiType===UiType.Amis"></amis-sample>
+        </ng-container>
+
+    </nz-tab>
+    <nz-tab nzTitle="toml">
+        <div class="source-code-block">
+            <i nz-icon nzType="copy" class="copy-icon" nzTheme="outline" (click)="copyText(toml)"></i>
+            <pre class="toml">
+{{toml}}
+        </pre>
+        </div>
+
+    </nz-tab>
+    <nz-tab nzTitle="源码"></nz-tab>
+</nz-tabset>

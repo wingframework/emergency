@@ -65,6 +65,7 @@
   "menu.dev": "开发者",
   "menu.metaDesign": "元数据设计",
   "menu.metaView": "元数据视图",
+  "menu.tomlSample": "toml案例",
 
   "menu.report": "报表",
   "menu.report.relation": "全屏关系图",

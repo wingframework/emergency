@@ -390,7 +390,15 @@
               "text": "测试1",
               "i18n": "menu.dashboard",
               "icon": "anticon-dashboard"
+            },
+
+{
+              "link":"/dynamic-demo/toml-sample",
+              "text": "toml案例",
+              "i18n": "menu.tomlSample",
+              "icon": "anticon-dashboard"
             }
+            
           ]
         },
         {
