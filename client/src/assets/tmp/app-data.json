@@ -378,6 +378,18 @@
               "link": "/dev/meta-design",
               "i18n": "menu.metaDesign",
               "reuse": false
+            },
+            {
+              "link":"/dynamic-demo/sample1",
+              "text": "测试1",
+              "i18n": "menu.dashboard",
+              "icon": "anticon-dashboard"
+                },
+            {
+              "link":"/dynamic-demo/sample1",
+              "text": "测试1",
+              "i18n": "menu.dashboard",
+              "icon": "anticon-dashboard"
             }
           ]
         },

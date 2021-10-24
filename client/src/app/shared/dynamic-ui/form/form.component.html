@@ -1,0 +1,9 @@
+<h1>form:{{ body.title }}</h1>
+<!-- {{ body | json }} -->
+<form nz-form [formGroup]="formGroup" [nzLayout]="body.mode || 'inline'">
+    <ng-container *ngFor="let item of body.body">
+        <dynamic-ui [body]="item" [formGroup]="formGroup"></dynamic-ui>
+    </ng-container>
+</form>
+
+<!-- <form (ngSubmit)="onSubmit()" [formGroup]="form"> </form> -->

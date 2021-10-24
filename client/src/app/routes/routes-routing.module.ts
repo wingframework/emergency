@@ -31,7 +31,8 @@ const routes: Routes = [
       { path: 'extras', loadChildren: () => import('./extras/extras.module').then(m => m.ExtrasModule) },
       { path: 'pro', loadChildren: () => import('./pro/pro.module').then(m => m.ProModule) },
       { path: 'staff', loadChildren: () => import('./staff/staff.module').then(m => m.StaffModule) },
-      { path: 'dev', loadChildren: () => import('./dev/dev.module').then(m => m.DevModule) }
+      { path: 'dev', loadChildren: () => import('./dev/dev.module').then(m => m.DevModule) },
+      { path: 'dynamic-demo', loadChildren: () => import('./dynamic-demo/dynamic-demo.module').then(m => m.DynamicDemoModule) }
     ]
   },
   // Blak Layout 空白布局
