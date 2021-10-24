@@ -1,19 +1,19 @@
 package com.example.demo.Rbac.Dto;
 
-import com.example.demo.Rbac.Entitys.Userr;
+import com.example.demo.Rbac.Entitys.User;
 
 import java.util.List;
 
 public class UserrQueryOutput {
-    private List<Userr> data;
+    private List<User> data;
 
     private  int total;
 
-    public List<Userr> getData() {
+    public List<User> getData() {
         return data;
     }
 
-    public void setData(List<Userr> data) {
+    public void setData(List<User> data) {
         this.data = data;
     }
 

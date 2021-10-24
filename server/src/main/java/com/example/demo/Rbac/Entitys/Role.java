@@ -1,6 +1,13 @@
 package com.example.demo.Rbac.Entitys;
 
+import javax.persistence.*;
+import java.util.List;
+
+@Table(name="rbac_role")
+@Entity
 public class Role {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String roleName;
     // 权限字符
@@ -9,6 +16,12 @@ public class Role {
     private int sort;
     //1代表正常，0代表不正常
     private int status;
+
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "rbac_role_menu", joinColumns = {@JoinColumn(name = "roleId", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "menuId", referencedColumnName = "id")})
+    private List<Menu> menuList;
 
     public int getId() {
         return id;
@@ -48,5 +61,13 @@ public class Role {
 
     public void setStatus(int status) {
         this.status = status;
+    }
+
+    public List<Menu> getMenuList() {
+        return menuList;
+    }
+
+    public void setMenuList(List<Menu> menuList) {
+        this.menuList = menuList;
     }
 }

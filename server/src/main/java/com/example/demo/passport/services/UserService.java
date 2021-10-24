@@ -1,6 +1,6 @@
 package com.example.demo.passport.services;
 
-import com.example.demo.passport.entitys.User;
+import com.example.demo.Rbac.Entitys.User;
 import com.example.demo.passport.Mappers.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

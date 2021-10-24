@@ -3,18 +3,16 @@ package com.example.demo.passport.controllers;
 import com.example.demo.AutoMapper;
 import com.example.demo.Cofigs.Rtn;
 import com.example.demo.Cofigs.TokenService;
+import com.example.demo.Rbac.Entitys.User;
 import com.example.demo.commons.mappers.SmsMapper;
 import com.example.demo.commons.sevices.SmsService;
 import com.example.demo.passport.Dto.*;
 import com.example.demo.passport.Mappers.UserMapper;
 import com.example.demo.passport.entitys.Sms;
-import com.example.demo.passport.entitys.User;
-import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
 import java.util.UUID;
 
 @RestController

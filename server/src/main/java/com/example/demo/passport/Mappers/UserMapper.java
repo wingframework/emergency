@@ -1,7 +1,6 @@
 package com.example.demo.passport.Mappers;
 
-import com.example.demo.passport.entitys.Sms;
-import com.example.demo.passport.entitys.User;
+import com.example.demo.Rbac.Entitys.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;

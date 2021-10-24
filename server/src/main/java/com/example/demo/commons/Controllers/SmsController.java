@@ -1,19 +1,11 @@
 package com.example.demo.commons.Controllers;
 
-import com.aliyun.dysmsapi20170525.Client;
-import com.aliyun.dysmsapi20170525.models.SendSmsRequest;
-import com.aliyun.teaopenapi.models.Config;
 import com.example.demo.Cofigs.Rtn;
 import com.example.demo.commons.sevices.SmsService;
-import com.example.demo.passport.entitys.Sms;
-import com.example.demo.passport.entitys.User;
-import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 //@ApiOperation()
 @RestController

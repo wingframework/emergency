@@ -13,32 +13,32 @@ import java.util.List;
 @RestController
 @RequestMapping("api/menu")
 public class MenuController {
-    @Autowired
-    private MenuMapper menuMapper;
-
-    @PostMapping("createMenu")
-    public Rtn<Boolean> addMenu(@RequestBody Menu menu){
-        //  Menu menu1 = AutoMapper.INSTANCE.addDtoToMenu(menu1);
-
-        return Rtn.Success(true);
-    }
-    @DeleteMapping("delete/{id}")
-    public Rtn<Boolean> deleteRoleById(@PathVariable int id ){
-        menuMapper.deleteById(id);
-        return Rtn.Success(true);
-    }
-    @PostMapping("update")
-    public Rtn<Boolean> updateMenu(@RequestBody Menu menu){
-
-        return Rtn.Success(true);
-    }
-    @GetMapping("query")
-    public Rtn<List<Menu>> queryAll(Menu menu){
-        //  List<Menu> menus = menuMapper.queryAll(menu);
-        List<Menu> menus = menuMapper.queryAll(menu);
-        return Rtn.Success(menus);
-
-
-    }
-
+//    @Autowired
+//    private MenuMapper menuMapper;
+//
+//    @PostMapping("createMenu")
+//    public Rtn<Boolean> addMenu(@RequestBody Menu menu){
+//        //  Menu menu1 = AutoMapper.INSTANCE.addDtoToMenu(menu1);
+//
+//        return Rtn.Success(true);
+//    }
+//    @DeleteMapping("delete/{id}")
+//    public Rtn<Boolean> deleteRoleById(@PathVariable int id ){
+//        menuMapper.deleteById(id);
+//        return Rtn.Success(true);
+//    }
+//    @PostMapping("update")
+//    public Rtn<Boolean> updateMenu(@RequestBody Menu menu){
+//
+//        return Rtn.Success(true);
+//    }
+//    @GetMapping("query")
+//    public Rtn<List<Menu>> queryAll(Menu menu){
+//        //  List<Menu> menus = menuMapper.queryAll(menu);
+//        List<Menu> menus = menuMapper.queryAll(menu);
+//        return Rtn.Success(menus);
+//
+//
+//    }
+//
 }
