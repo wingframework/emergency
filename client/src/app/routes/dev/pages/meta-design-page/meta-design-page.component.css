@@ -1,0 +1,12 @@
+.sql {
+    background: rgba(0, 0, 0, .7);
+    color: #e2e2e2;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.object-code {
+    margin-bottom: 40px;
+    border: 1px solid #e2e2e2;
+    padding: 40px 0;
+}

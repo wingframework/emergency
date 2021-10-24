@@ -31,7 +31,7 @@ const routes: Routes = [
       { path: 'extras', loadChildren: () => import('./extras/extras.module').then(m => m.ExtrasModule) },
       { path: 'pro', loadChildren: () => import('./pro/pro.module').then(m => m.ProModule) },
       { path: 'staff', loadChildren: () => import('./staff/staff.module').then(m => m.StaffModule) },
-
+      { path: 'dev', loadChildren: () => import('./dev/dev.module').then(m => m.DevModule) }
     ]
   },
   // Blak Layout 空白布局
@@ -59,4 +59,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class RouteRoutingModule { }
+export class RouteRoutingModule {}

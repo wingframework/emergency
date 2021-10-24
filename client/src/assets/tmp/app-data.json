@@ -361,6 +361,50 @@
           ]
         }
       ]
+    },
+    {
+      "text": "开发者",
+      "i18n": "menu.dev",
+      "group": true,
+      "hideInBreadcrumb": true,
+      "children": [
+        {
+          "text": "元数据",
+          "i18n": "menu.meta",
+          "icon": "anticon-cloud",
+          "children": [
+            {
+              "text": "元数据设计",
+              "link": "/dev/meta-design",
+              "i18n": "menu.metaDesign",
+              "reuse": false
+            }
+          ]
+        },
+        {
+          "text": "Extras",
+          "i18n": "menu.extras",
+          "link": "/extras",
+          "icon": "anticon-link",
+          "children": [
+            {
+              "text": "Help Center",
+              "link": "/extras/helpcenter",
+              "i18n": "menu.extras.helpcenter"
+            },
+            {
+              "text": "Settings",
+              "link": "/extras/settings",
+              "i18n": "menu.extras.settings"
+            },
+            {
+              "text": "Poi",
+              "link": "/extras/poi",
+              "i18n": "menu.extras.poi"
+            }
+          ]
+        }
+      ]
     }
   ]
 }

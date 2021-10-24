@@ -61,6 +61,11 @@
   "menu.account.trigger": "触发错误",
   "menu.account.logout": "退出登录",
   "menu.more": "更多",
+  
+  "menu.dev": "开发者",
+  "menu.metaDesign": "元数据设计",
+  "menu.metaView": "元数据视图",
+
   "menu.report": "报表",
   "menu.report.relation": "全屏关系图",
   "menu.extras": "扩展",

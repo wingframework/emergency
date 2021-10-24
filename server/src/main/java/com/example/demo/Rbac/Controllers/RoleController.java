@@ -23,12 +23,12 @@ public class RoleController {
     private RoleMapper roleMapper;
 
     @PostMapping("roleAdd")
-    public Rtn<Boolean> roleAdd(RoleAddInputDto roleAddInputDto){
-        Role role = AutoMapper.INSTANCE.roleAddDtoToRole(roleAddInputDto)
+    public Rtn<Boolean> roleAdd(RoleAddInputDto roleAddInputDto) {
+        Role role = AutoMapper.INSTANCE.roleAddDtoToRole(roleAddInputDto);
         roleMapper.roleAdd(role);
         Role roleByCode = roleMapper.findRoleByCode(roleAddInputDto.getCode());
         List<RoleMenu> roleMenus = new LinkedList<>();
-        for(int i=0;i<roleAddInputDto.getMenuIdList().size();i++){
+        for (int i = 0; i < roleAddInputDto.getMenuIdList().size(); i++) {
             RoleMenu roleMenu = new RoleMenu();
             roleMenu.setRoleId(roleByCode.getId());
             roleMenu.setMenuId(roleAddInputDto.getMenuIdList().get(i));
@@ -37,40 +37,10 @@ public class RoleController {
         roleMapper.addRoleMenus(roleMenus);
         return Rtn.Success(true);
     }
-    @PostMapping("detail/{id}")
-    public Rtn<List<Integer>> detailById(int roleId){
 
-    }
+    // @PostMapping("detail/{id}")
+    // public Rtn<List<Integer>> detailById(int roleId) {
 
+    // }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -9,13 +9,15 @@ import org.springframework.stereotype.Service;
 public class UserService {
     @Autowired
     UserMapper userMapper;
-//    public User findUserById(int id){
-//        return userMapper.FindUserById(id);
-//
-//    }
-//    public User findUserByUsername(String username){
-//        return userMapper.QueryUserByUsername(username);
-//
-//    }
+
+    public User findUserById(int id) {
+        return userMapper.FindUserById(id);
+
+    }
+
+    // public User findUserByUsername(String username) {
+    // return userMapper.QueryUserByUsername(username);
+
+    // }
 
 }

@@ -24,13 +24,13 @@ public class UserrController {
     private UserrMapper userrMapper;
 
     @PostMapping("UserrAdd")
-    public Rtn<Boolean> UserrAdd(@RequestBody UserrAddInputDto userrAddInputDto){
+    public Rtn<Boolean> UserrAdd(@RequestBody UserrAddInputDto userrAddInputDto) {
         Userr userr = AutoMapper.INSTANCE.addDtoToUserr(userrAddInputDto);
         userrMapper.UserrAdd(userr);
 
         Userr userrByUsername = userrMapper.findUserrByUsername(userrAddInputDto.getUsername());
         List<UserrRole> userrRoles = new LinkedList<>();
-        for(int i=0;i<userrAddInputDto.getRoleIdList().size();i++){
+        for (int i = 0; i < userrAddInputDto.getRoleIdList().size(); i++) {
             UserrRole userrRole = new UserrRole();
             userrRole.setUserId(userrByUsername.getId());
             userrRole.setRoleId(userrAddInputDto.getRoleIdList().get(i));
@@ -42,34 +42,35 @@ public class UserrController {
     }
 
     @PostMapping("detail/{userrId}")
-    public Rtn<List<Integer>>  detailByUserrId(int userrId){
+    public Rtn<List<Integer>> detailByUserrId(int userrId) {
         List<Integer> roleIdByUserrID = userrMapper.findRoleIdByUserrID(userrId);
         return Rtn.Success(roleIdByUserrID);
     }
 
     @PostMapping("UserrUpdate")
-    public Rtn<Boolean> userrUpdate(@RequestBody UserrUpdateDto userrUpdateDto ){
-          userrMapper.deleteByUserrId(userrUpdateDto.getId());
+    public Rtn<Boolean> userrUpdate(@RequestBody UserrUpdateDto userrUpdateDto) {
+        userrMapper.deleteByUserrId(userrUpdateDto.getId());
         Userr userrById = userrMapper.findUserrById(userrUpdateDto.getId());
-         List<UserrRole> userrRoles = new LinkedList<>();
-         for (int i=0;i<userrUpdateDto.getRoleIdList().size();i++){
-             UserrRole userrRole = new UserrRole();
-             userrRole.setUserId(userrById.getId());
-             userrRole.setRoleId(userrUpdateDto.getRoleIdList().get(i));
-             userrRoles.add(userrRole);
-         }
-         userrMapper.addUserrRoles(userrRoles);
-         userrMapper.resetPasswordById(userrUpdateDto.getId());
-         return Rtn.Success(true);
+        List<UserrRole> userrRoles = new LinkedList<>();
+        for (int i = 0; i < userrUpdateDto.getRoleIdList().size(); i++) {
+            UserrRole userrRole = new UserrRole();
+            userrRole.setUserId(userrById.getId());
+            userrRole.setRoleId(userrUpdateDto.getRoleIdList().get(i));
+            userrRoles.add(userrRole);
+        }
+        userrMapper.addUserrRoles(userrRoles);
+        userrMapper.resetPasswordById(userrUpdateDto.getId());
+        return Rtn.Success(true);
     }
 
     @DeleteMapping("delete/{id}")
-    public Rtn<Boolean> userrDelete(@PathVariable int id){
+    public Rtn<Boolean> userrDelete(@PathVariable int id) {
         userrMapper.deleteById(id);
         return Rtn.Success(true);
     }
+
     @GetMapping("list")
-    public Rtn<UserrQueryOutput> getRole(UserrQueryInput userrQueryInput){
+    public Rtn<UserrQueryOutput> getRole(UserrQueryInput userrQueryInput) {
         List<Userr> userrs = userrMapper.pageQueryByKeyword(userrQueryInput);
         int total = userrMapper.pageQueryByKeywordCount(userrQueryInput);
         UserrQueryOutput result = new UserrQueryOutput();
@@ -79,8 +80,5 @@ public class UserrController {
         return Rtn.Success(result);
 
     }
-
-
-
 
 }

@@ -32,6 +32,11 @@
         from user
         where id = #{id};
     </delete>
+<select id="FindUserById" resultType="com.example.demo.passport.entitys.User">
+        SELECT *
+        FROM user
+        where id = #{id} limit 0,1
+    </select>
 
 
 </mapper>

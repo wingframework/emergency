@@ -1,0 +1,71 @@
+<page-header [title]="'元数据设计'" [action]="action">
+    <ng-template #action>
+        <button nz-button nzType="primary" (click)="submit()" [disabled]="fields.length<=0||!metaComFormGroup.valid">提交</button>
+    </ng-template>
+</page-header>
+
+<nz-card [nzBordered]="false">
+    <div>
+        <textarea rows="4" class="sql" nz-input [(ngModel)]="sql" placeholder="sql"></textarea>
+    </div>
+    <div style="text-align: right;margin-top: 15px;margin-bottom: 15px;">
+        <button nz-button nzType="primary" (click)="queryMeta()">查询</button>
+    </div>
+
+
+    <div *ngIf="fields.length>0" class="object-code">
+        <form nz-form nzLayout="inline" [formGroup]="metaComFormGroup">
+            <nz-form-item>
+                <nz-form-label nzRequired>元数据代码</nz-form-label>
+                <nz-form-control nzHasFeedback>
+                    <input nz-input formControlName="objectCode" />
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-label nzRequired>更新表名</nz-form-label>
+                <nz-form-control nzHasFeedback>
+                    <input nz-input formControlName="tableName" />
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-label nzRequired>主键</nz-form-label>
+                <nz-form-control nzHasFeedback>
+                    <input nz-input formControlName="pkKey" />
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-label nzRequired>元数据分组</nz-form-label>
+                <nz-form-control nzHasFeedback>
+                    <input nz-input formControlName="groupName" />
+                </nz-form-control>
+            </nz-form-item>
+
+
+        </form>
+
+    </div>
+
+    <!-- <ng-container *ngIf="metaCom"> -->
+    <!-- <app-meta-object [metaObject]="metaCom" [power]="power"></app-meta-object> -->
+    <!-- </ng-container> -->
+
+
+    <!-- 
+<nz-collapse [nzBordered]="false" *ngIf="metaCom">
+    <nz-collapse-panel [nzHeader]="'源码'" [nzActive]="sourcePanelActive">
+        <nz-tabset>
+            <nz-tab nzTitle="Typescript">
+                <pre>        {{ getSource() }}</pre>
+            </nz-tab>
+            <nz-tab nzTitle="Java"> Content of Tab Pane 2 </nz-tab>
+            <nz-tab nzTitle="Dart"> Content of Tab Pane 3 </nz-tab>
+        </nz-tabset>
+    </nz-collapse-panel>
+</nz-collapse> -->
+
+    <ng-container *ngIf="fields.length > 0">
+        <st [columns]="columns" [data]="fields"></st>
+    </ng-container>
+</nz-card>
+
+<edit-field-modal *ngIf="selectedField" [field]="selectedField" (OnSave)="selectedField=$any(undefined)"></edit-field-modal>

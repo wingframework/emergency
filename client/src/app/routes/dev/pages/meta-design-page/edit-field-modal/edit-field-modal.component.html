@@ -1,0 +1,44 @@
+<nz-modal [(nzVisible)]="editFieldVisible" [nzTitle]="field ? '编辑字段' + field.fieldName : '编辑字段'" (nzOnCancel)="editFieldVisible = false;OnSave.emit()" (nzOnOk)="editFieldVisible = false; confirmEditField()">
+    <ng-container *nzModalContent>
+        <nz-form-item>
+            <nz-form-label style="margin-right: 53px" [nzXs]="24" [nzSm]="4">字段名</nz-form-label>
+            <nz-form-control [nzXs]="24" [nzSm]="16">
+                <!-- <input [placeholder]="'字段名'" readonly nz-input [(ngModel)]="field.fieldName" style="width: 80%" /> -->
+                {{field.fieldName}}
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label style="margin-right: 53px" [nzXs]="24" [nzSm]="4">别名</nz-form-label>
+            <nz-form-control [nzXs]="24" [nzSm]="16">
+                <nz-input-group nzSearch>
+                    <input [placeholder]="'别名'" nz-input [(ngModel)]="field.alias" />
+                </nz-input-group>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label style="margin-right: 53px" [nzXs]="24" [nzSm]="4">权限</nz-form-label>
+            <nz-form-control [nzXs]="24" [nzSm]="16">
+                <nz-input-group nzSearch>
+                    <nz-select [nzMaxMultipleCount]="10" style="width: 100%" nzMode="multiple" nzPlaceHolder="选择功能" [(ngModel)]="selectedPowers">
+                        <nz-option *ngFor="let option of listOfOption" [nzLabel]="option.label" [nzValue]="option.value"></nz-option>
+                    </nz-select>
+                </nz-input-group>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label style="margin-right: 53px" [nzXs]="24" [nzSm]="4">校验</nz-form-label>
+            <nz-form-control [nzXs]="24" [nzSm]="16">
+                <label nz-checkbox [nzChecked]="field.required">
+      <span>必填</span>
+    </label>
+            </nz-form-control>
+        </nz-form-item>
+        <!-- <nz-form-item>
+            <nz-form-label style="margin-right: 53px" [nzXs]="24" [nzSm]="4">下标</nz-form-label>
+            <nz-form-control [nzXs]="24" [nzSm]="16">
+                <nz-tag (click)="minIndex()">-</nz-tag> {{ getIndex() }}
+                <nz-tag (click)="addIndex()">+</nz-tag>
+            </nz-form-control>
+        </nz-form-item> -->
+    </ng-container>
+</nz-modal>

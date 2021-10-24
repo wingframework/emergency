@@ -1,6 +1,5 @@
 package com.example.demo.passport.controllers;
 
-
 import com.example.demo.AutoMapper;
 import com.example.demo.Cofigs.Rtn;
 import com.example.demo.Cofigs.TokenService;
@@ -18,7 +17,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Date;
 import java.util.UUID;
 
-
 @RestController
 @RequestMapping("api/user")
 public class UserController {
@@ -31,8 +29,6 @@ public class UserController {
     @Autowired
     private TokenService tokenService;
 
-
-
     @PostMapping("register")
     public Rtn<RegisterUserOutput> registerUser(@Validated @RequestBody RegisterInputDto registerInputDto) {
         User user = AutoMapper.INSTANCE.RegisterDtoToUser(registerInputDto);
@@ -40,22 +36,22 @@ public class UserController {
         if (userExsitCount > 0) {
             return Rtn.Error("您输入的手机号或者用户名已注册");
         }
-        Sms sms = smsService.getLastSmsNotExpire(registerInputDto.getPhoneNumber(), 3,registerInputDto.getType());
+        Sms sms = smsService.getLastSmsNotExpire(registerInputDto.getPhoneNumber(), 3, registerInputDto.getType());
         if (sms == null) {
             return Rtn.Error("请先发送短信");
         } else {
-               if (!registerInputDto.getCode().equals(sms.getCode())){
-                     return Rtn.Error("您输入的验证码错误");
-               }
-          }
+            if (!registerInputDto.getCode().equals(sms.getCode())) {
+                return Rtn.Error("您输入的验证码错误");
+            }
+        }
 
         if (!registerInputDto.getRePassword().equals(registerInputDto.getPassword())) {
             return Rtn.Error("两次输入的密码不一致，请重新输入");
         }
         userMapper.create(user);
-        String token =  tokenService.getToken(user);
-        RegisterUserOutput data= new RegisterUserOutput(token);
-        return  Rtn.Success(  data);
+        String token = tokenService.getToken(user);
+        RegisterUserOutput data = new RegisterUserOutput(token);
+        return Rtn.Success(data);
     }
 
     @PostMapping("login")
@@ -83,11 +79,12 @@ public class UserController {
         if (userExsitCount == 0) {
             return Rtn.Error("该用户未注册");
         }
-        Sms sms = smsService.getLastSmsNotExpire(forgetPasswordUserDto.getPhoneNumber(), 3,forgetPasswordUserDto.getType());
+        Sms sms = smsService.getLastSmsNotExpire(forgetPasswordUserDto.getPhoneNumber(), 3,
+                forgetPasswordUserDto.getType());
         if (sms == null) {
             return Rtn.Error("请先发送短信");
         } else {
-            if (!forgetPasswordUserDto.getCode().equals(sms.getCode())){
+            if (!forgetPasswordUserDto.getCode().equals(sms.getCode())) {
                 return Rtn.Error("您输入的验证码错误");
             }
         }
@@ -95,41 +92,39 @@ public class UserController {
         if (!forgetPasswordUserDto.getRePassword().equals(forgetPasswordUserDto.getPassword())) {
             return Rtn.Error("两次输入的密码不一致");
         }
-        userMapper.updatePasswordByPhoneNumber(forgetPasswordUserDto.getPhoneNumber(), forgetPasswordUserDto.getPassword());
+        userMapper.updatePasswordByPhoneNumber(forgetPasswordUserDto.getPhoneNumber(),
+                forgetPasswordUserDto.getPassword());
         return Rtn.Success(true);
 
     }
 
     @GetMapping("sentSms")
     public Rtn<Boolean> sentSms(@Validated SentSmsInput sentSmsInput) throws Exception {
-      Sms lastSms =  smsService.getLastSmsNotExpire(sentSmsInput.getPhonenumber(),3, sentSmsInput.getType());
-             // uuid是产生随机数
-        String code=   UUID.randomUUID().toString().substring(0,4);
-        smsService.sendSms(sentSmsInput.getPhonenumber(),code);
+        Sms lastSms = smsService.getLastSmsNotExpire(sentSmsInput.getPhonenumber(), 3, sentSmsInput.getType());
+        // uuid是产生随机数
+        String code = UUID.randomUUID().toString().substring(0, 4);
+        smsService.sendSms(sentSmsInput.getPhonenumber(), code);
         Sms sms = new Sms();
         sms.setPhonenumber(sentSmsInput.getPhonenumber());
         sms.setType(sentSmsInput.getType());
-       // sms.setCode(code);
-       // sms.setSentAt(new Date());
+        // sms.setCode(code);
+        // sms.setSentAt(new Date());
         smsMapper.Create(sms);
-        return  Rtn.Success(true);
+        return Rtn.Success(true);
 
     }
 
     @DeleteMapping("delete/{id}")
-    public Rtn<Boolean> deleteById(int id){
+    public Rtn<Boolean> deleteById(int id) {
         userMapper.deleteById(id);
         return Rtn.Success(true);
     }
 
+    @GetMapping("GetUserInfo")
+    public Rtn<User> GetUserInfo() {
+
+        User user = tokenService.getUser();
+        return Rtn.Success(user);
+    }
 
 }
-
-
-
-
-
-
-
-
-
