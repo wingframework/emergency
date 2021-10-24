@@ -15,7 +15,7 @@
            or phoneNumber = #{user.phoneNumber};
     </select>
 
-    <select id="findUserByUsername" resultType="com.example.demo.passport.entitys.User">
+    <select id="findUserByUsername" resultType="com.example.demo.Rbac.Entitys.User">
         SELECT *
         FROM user
         where username = #{username};
@@ -32,7 +32,7 @@
         from user
         where id = #{id};
     </delete>
-<select id="FindUserById" resultType="com.example.demo.passport.entitys.User">
+<select id="FindUserById" resultType="com.example.demo.Rbac.Entitys.User">
         SELECT *
         FROM user
         where id = #{id} limit 0,1

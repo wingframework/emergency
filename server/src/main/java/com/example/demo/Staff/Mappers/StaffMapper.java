@@ -2,7 +2,6 @@ package com.example.demo.Staff.Mappers;
 
 import com.example.demo.Staff.Dto.StaffQueryInput;
 import com.example.demo.Staff.entitys.Staff;
-import com.example.demo.passport.entitys.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -25,7 +24,7 @@ public interface StaffMapper {
     int pageQueryByKeywordCount(StaffQueryInput staffQueryInput);
 
     // 查询不在值班人员中的用户
-    List<User> queryNotStaffUser();
+//    List<User> queryNotStaffUser();
 
 
     void deleteById(int id);

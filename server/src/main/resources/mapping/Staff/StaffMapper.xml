@@ -38,7 +38,7 @@
 
 <!--    查询可加入的值班人员的用户列表  查出不在值班人员列表中的用户3  用user表中用户1 减去 staff表中的用户2 ，                                        -->
 <!--    SELECT  user.* FROM springboot.user  left join springboot.staff   on staff.userId=user.id  where  staff.userId is null;-->
-    <select id="queryNotStaffUser" resultType="com.example.demo.passport.entitys.User" >
+    <select id="queryNotStaffUser" resultType="com.example.demo.Rbac.Entitys.User" >
         SELECT user.* FROM springboot.user left join springboot.staff  on staff.userId =  user.id   where  staff.userId   is null  ;
 
     </select>

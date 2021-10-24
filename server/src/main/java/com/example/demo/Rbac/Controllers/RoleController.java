@@ -3,9 +3,11 @@ package com.example.demo.Rbac.Controllers;
 import com.example.demo.AutoMapper;
 import com.example.demo.Cofigs.Rtn;
 import com.example.demo.Rbac.Dto.RoleAddInputDto;
+import com.example.demo.Rbac.Entitys.Menu;
 import com.example.demo.Rbac.Entitys.Role;
-import com.example.demo.Rbac.Entitys.RoleMenu;
-import com.example.demo.Rbac.Mappers.RoleMapper;
+//import com.example.demo.Rbac.Mappers.RoleMapper;
+import com.example.demo.Rbac.services.jpa.MenuJpa;
+import com.example.demo.Rbac.services.jpa.RoleJpa;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,28 +21,24 @@ import java.util.List;
 @RestController
 @RequestMapping("api/role")
 public class RoleController {
+  @Autowired
+  private   RoleJpa roleJpa;
     @Autowired
-    private RoleMapper roleMapper;
+  private MenuJpa menuJpa;
+
 
     @PostMapping("roleAdd")
     public Rtn<Boolean> roleAdd(RoleAddInputDto roleAddInputDto) {
         Role role = AutoMapper.INSTANCE.roleAddDtoToRole(roleAddInputDto);
-        roleMapper.roleAdd(role);
-        Role roleByCode = roleMapper.findRoleByCode(roleAddInputDto.getCode());
-        List<RoleMenu> roleMenus = new LinkedList<>();
-        for (int i = 0; i < roleAddInputDto.getMenuIdList().size(); i++) {
-            RoleMenu roleMenu = new RoleMenu();
-            roleMenu.setRoleId(roleByCode.getId());
-            roleMenu.setMenuId(roleAddInputDto.getMenuIdList().get(i));
-            roleMenus.add(roleMenu);
-        }
-        roleMapper.addRoleMenus(roleMenus);
-        return Rtn.Success(true);
+       List<Menu>  menus=   menuJpa.findByIdIn(roleAddInputDto.getMenuIdList());
+       role.setMenuList(menus);
+        roleJpa.saveAndFlush(role);
+
+    return  Rtn.Success(true);
     }
 
-    // @PostMapping("detail/{id}")
-    // public Rtn<List<Integer>> detailById(int roleId) {
-
-    // }
-
+     @PostMapping("detail/{id}")
+     public Rtn<Role> detailById(int roleId) {
+         return Rtn.Success(roleJpa.findById(roleId).get());
+     }
 }

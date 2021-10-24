@@ -3,10 +3,8 @@ package com.example.demo.Staff.Controllers;
 import com.example.demo.AutoMapper;
 import com.example.demo.Cofigs.Rtn;
 import com.example.demo.Staff.Dto.*;
-import com.example.demo.Staff.Mappers.ScheduleMapper;
 import com.example.demo.Staff.entitys.Staff;
 import com.example.demo.Staff.Mappers.StaffMapper;
-import com.example.demo.passport.entitys.User;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -65,16 +63,16 @@ public class StaffController {
         return Rtn.Success(result);
     }
 
-    @ApiOperation("查询可加入的值班人员的用户列表")
-    @GetMapping("queryNotStaffUser")
-                           //查询不是值班人员的用户
-    public Rtn<List<User>> queryNotStaffUser() {
-
-      List<User> list=  staffMapper.queryNotStaffUser();
-
-     return Rtn.Success(list);
-
-    }
+//    @ApiOperation("查询可加入的值班人员的用户列表")
+//    @GetMapping("queryNotStaffUser")
+//                           //查询不是值班人员的用户
+//    public Rtn<List<User>> queryNotStaffUser() {
+//
+//      List<User> list=  staffMapper.queryNotStaffUser();
+//
+//     return Rtn.Success(list);
+//
+//    }
 
     //修改值班人员
     @PostMapping("Update")

@@ -1,8 +1,13 @@
 package com.example.demo.Rbac.Entitys;
 
+import javax.persistence.*;
 import java.util.Date;
 
-public class Userr {
+@Entity
+@Table(name = "rbac_user")
+public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     //头像地址的意思
     private String abatarUrl;
@@ -21,6 +26,13 @@ public class Userr {
 
     private String password;
     private String func;
+
+    @Column(name = "role_id")
+    private int roleId;
+
+    @OneToOne(cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
+    @JoinColumn(name = "role_id", referencedColumnName = "id", insertable = false, updatable = false)
+    private Role role;
 
     public int getId() {
         return id;
