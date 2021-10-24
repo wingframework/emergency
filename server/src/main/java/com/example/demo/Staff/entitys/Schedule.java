@@ -1,12 +1,11 @@
 package com.example.demo.Staff.entitys;
 
-import java.time.DateTimeException;
 import java.util.Date;
 
 public class Schedule {
     private int id;
-    private String leaderStaffId;
-    private String peopleStaffId;
+    private Integer leaderStaffId;
+    private Integer peopleStaffId;
     //早班，中班或者晚班
     private String classes;
     private Date createAt=new Date();
@@ -30,19 +29,19 @@ public class Schedule {
         this.id = id;
     }
 
-    public String getLeaderStaffId() {
+    public Integer getLeaderStaffId() {
         return leaderStaffId;
     }
 
-    public void setLeaderStaffId(String leaderStaffId) {
+    public void setLeaderStaffId(Integer leaderStaffId) {
         this.leaderStaffId = leaderStaffId;
     }
 
-    public String getPeopleStaffId() {
+    public Integer getPeopleStaffId() {
         return peopleStaffId;
     }
 
-    public void setPeopleStaffId(String peopleStaffId) {
+    public void setPeopleStaffId(Integer peopleStaffId) {
         this.peopleStaffId = peopleStaffId;
     }
 

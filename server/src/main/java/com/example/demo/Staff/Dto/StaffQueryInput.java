@@ -2,9 +2,12 @@ package com.example.demo.Staff.Dto;
 
 public class StaffQueryInput {
     private String keyword;
-
     private int page=0;
     private int pagesize=10;
+    public int skip(){
+        return page*pagesize;
+    }
+
 
     public String getKeyword() {
         return keyword;
@@ -30,8 +33,5 @@ public class StaffQueryInput {
         this.pagesize = pagesize;
     }
 
-    public int skip(){
-            return page*pagesize;
-    }
 
 }

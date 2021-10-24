@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.Rbac.Mappers.RoleMapper">
+    <insert id="roleAdd">
+        insert into role (roleName, code, sort, status)
+        values (#{role.roleName}, #{role.code}, #{role.sort}, #{role.status});
+    </insert>
+
+    <select id="findRoleByCode" resultType="com.example.demo.Rbac.Entitys.Role">
+        SELECT *
+        FROM role
+        where code = #{code} limit 0,1
+        ;
+    </select>
+
+    <insert id="addRoleMenus" parameterType="list">
+        <foreach item="item" collection="list">
+            insert into role_menu (roleId,menuId) values (#{item.roleId},#{item.menuId})
+        </foreach>
+
+    </insert>
+
+    <select id="findMenuIdByRoleId" resultType="Integer">
+        SELECT menuId
+        FROM role_menu
+        where roleId = #{roleId};
+    </select>
+
+    <delete id="deleteByRoleId">
+        delete
+        from role_menu
+        where roleId = #{roleId};
+    </delete>
+
+    <select id="findRoleById" resultType="com.example.demo.Rbac.Entitys.Role">
+        SELECT *
+        FROM role
+        where id = #{id} limit 0,1
+    </select>
+
+    <select id="pageQueryByKeyword" resultType="com.example.demo.Rbac.Entitys.Role">
+        SELECT * FROM role
+        <if test="keyword!=null">
+            where (roleName or code) like '%${keyword}%'
+        </if>
+        limit ${page*pagesize},#{pagesize} ;
+    </select>
+
+    <select id="pageQueryByKeywordCount" resultType="int">
+        SELECT Count(*) FROM role
+        <if test="keyword!=null">
+            where (role or code) like '%${keyword}%'
+        </if>
+        ;
+    </select>
+
+
+
+
+
+</mapper>

@@ -9,5 +9,9 @@
 //
 //    二、用户登录
 //       1、建表、写实体类、写dto、写控制器、配Automapper、写Usermapper、在mapper.xml 里面记得添加sql语句。
+//       自己查了一下：@Param注解的作用是给参数命名,参数命名后就能根据名字得到参数值,正确的将参数传入sql语句中
+//        2、 Dto都是一个界面的显示
+              //  3、还没理解透的：sms.xml里面；smsService里面的
+         // 4、usermapper上面有
 //
 //}

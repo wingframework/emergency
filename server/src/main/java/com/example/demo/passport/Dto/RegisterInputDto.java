@@ -1,35 +1,29 @@
 package com.example.demo.passport.Dto;
 
-import lombok.Data;
-import org.apache.logging.log4j.message.Message;
+
 import org.hibernate.validator.constraints.Length;
 
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
-
-@Data
 public class RegisterInputDto {
-
     @NotNull(message="手机号必填")
-    private  String phoneNumber;
-
-     //  @Length(min=4,max = 4,message = "验证码必须为数字")
+    private String phoneNumber;
     @Length(min=4,max = 4)
-    private  String code;
+    private String code;
+    @NotNull(message="用户名必填")
+    private String username;
+    @NotNull(message="密码必填")
+    private String password;
+      // Re:renewedly,重新地，再度
+    private String rePassword;
+    private  int type;
 
-    private  String username;
-    private  String password;
-
-    //Re:renewedly,重新地，再度
-    private  String rePassword;
-
-    public String getRePassword() {
-        return rePassword;
+    public int getType() {
+        return type;
     }
 
-    public void setRePassword(String rePassword) {
-        this.rePassword = rePassword;
+    public void setType(int type) {
+        this.type = type;
     }
 
     public String getPhoneNumber() {
@@ -64,8 +58,11 @@ public class RegisterInputDto {
         this.password = password;
     }
 
+    public String getRePassword() {
+        return rePassword;
+    }
 
-
-
-
+    public void setRePassword(String rePassword) {
+        this.rePassword = rePassword;
+    }
 }

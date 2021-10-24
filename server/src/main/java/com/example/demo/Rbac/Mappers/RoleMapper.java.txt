@@ -1,0 +1,25 @@
+package com.example.demo.Rbac.Mappers;
+
+import com.example.demo.Rbac.Dto.RoleQueryInput;
+import com.example.demo.Rbac.Entitys.Role;
+import com.example.demo.Rbac.Entitys.RoleMenu;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+@Mapper
+@Repository
+public interface RoleMapper {
+    void roleAdd(@Param("role")Role role);
+    Role findRoleByCode(String code);
+    void addRoleMenus(List<RoleMenu> roleMenus);
+    //  ??? 这里应该是找到MenuIdList吧
+    List<Integer> findMenuIdByRoleId(@Param("roleId") int roleId);
+    void deleteByRoleId(int roleId);
+    Role findRoleById(int id);
+    List<Role> pageQueryByKeyword(RoleQueryInput roleQueryInput);
+    int pageQueryByKeywordCount(RoleQueryInput roleQueryInput);
+
+}

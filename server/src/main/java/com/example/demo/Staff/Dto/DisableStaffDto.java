@@ -3,11 +3,15 @@ package com.example.demo.Staff.Dto;
 import javax.validation.constraints.NotNull;
 
 public class DisableStaffDto {
-    @NotNull
+    @NotNull(message = "用户名必填")
     private String username;
+    @NotNull(message="值班人员姓名必填")
     private String nickname;
+    @NotNull(message="只能是值班领导或者普通员工")
     private String job;
+    @NotNull(message = "只能是A组或B组或C组或D组")
     private String groupname;
+    @NotNull(message = "true是启用，false是禁用")
     private boolean disable;
 
     public String getUsername() {

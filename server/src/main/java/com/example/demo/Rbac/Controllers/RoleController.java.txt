@@ -1,0 +1,112 @@
+package com.example.demo.Rbac.Controllers;
+
+import com.example.demo.AutoMapper;
+import com.example.demo.Cofigs.Rtn;
+import com.example.demo.Rbac.Dto.RoleAddInputDto;
+import com.example.demo.Rbac.Dto.RoleQueryInput;
+import com.example.demo.Rbac.Dto.RoleQueryOutput;
+import com.example.demo.Rbac.Dto.RoleUpdateDto;
+import com.example.demo.Rbac.Entitys.Role;
+import com.example.demo.Rbac.Entitys.RoleMenu;
+import com.example.demo.Rbac.Mappers.RoleMapper;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.LinkedList;
+import java.util.List;
+
+@ApiOperation("角色管理")
+@RestController
+@RequestMapping("api/role")
+public class RoleController {
+    @Autowired
+    private RoleMapper roleMapper;
+
+    @PostMapping("roleAdd")
+    public Rtn<Boolean> roleAdd( RoleAddInputDto roleAddInputDto ){
+        Role role = AutoMapper.INSTANCE.addDtoToRole(roleAddInputDto);
+        roleMapper.roleAdd(role);
+        Role roleByCode = roleMapper.findRoleByCode(roleAddInputDto.getCode());
+        //ArrayList使用数组实现，查询快，增删慢；
+        //LinkedList使用链表实现，查询慢，增删快，适用于经常插入、删除大量数据的场合，适合采用迭代器Iterator遍历。
+        //如果仅仅是在列表末尾插入数据，LinkedList的效率低于ArrayList，因为LinkedList调用add时需要创建对象，而ArrayList只是在容量不够时才扩容。
+        List<RoleMenu> roleMenus = new LinkedList<>();
+        for (int i=0;i<roleAddInputDto.getMenuIdList().size();i++){
+            RoleMenu roleMenu = new RoleMenu();
+            roleMenu.setRoleId(roleByCode.getId());
+            roleMenu.setMenuId(roleAddInputDto.getMenuIdList().get(i));
+            roleMenus.add(roleMenu);
+        }
+        roleMapper.addRoleMenus(roleMenus);
+        return Rtn.Success(true);
+    }
+    @PostMapping("detail/{roleId}")
+    public Rtn<List<Integer>> detailByRoleId(int roleId){
+        List<Integer> menuIdByRoleId = roleMapper.findMenuIdByRoleId(roleId);
+          return  Rtn.Success(menuIdByRoleId);
+    }
+
+    @PostMapping("roleUpdate")
+    public Rtn<Boolean> updateRole(@RequestBody RoleUpdateDto roleUpdateDto){
+        roleMapper.deleteByRoleId(roleUpdateDto.getId());
+        Role roleById = roleMapper.findRoleById(roleUpdateDto.getId());
+        List<RoleMenu> roleMenus = new LinkedList<>();
+        for (int i= 0;i<roleUpdateDto.getMenuIdList().size();i++){
+            RoleMenu roleMenu = new RoleMenu();
+            roleMenu.setRoleId(roleById.getId());
+            roleMenu.setMenuId(roleUpdateDto.getMenuIdList().get(i));
+            roleMenus.add(roleMenu);
+
+        }
+        roleMapper.addRoleMenus(roleMenus);
+        return Rtn.Success(true);
+    }
+
+    @GetMapping("list")
+    public Rtn<RoleQueryOutput> getRole(RoleQueryInput roleQueryInput){
+        List<Role> data = roleMapper.pageQueryByKeyword(roleQueryInput);
+        int total = roleMapper.pageQueryByKeywordCount(roleQueryInput);
+        RoleQueryOutput result = new RoleQueryOutput();
+        result.setData(data);
+        result.setTotal(total);
+        return Rtn.Success(result);
+
+    }
+
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

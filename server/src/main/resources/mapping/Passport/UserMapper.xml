@@ -1,42 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper  namespace="com.example.demo.passport.Mappers.UserMapper">
+<mapper namespace="com.example.demo.passport.Mappers.UserMapper">
 
-    <insert id="Create" >
-        insert  into user (phoneNumber,username,password) values(#{user.phoneNumber},#{ user.username },#{ user.password })
-
+    <insert id="create">
+        insert into user (username, password, phoneNumber)
+        values (#{user.username}, #{user.password}, #{user.phoneNumber});
     </insert>
 
-    <select id="CountUserExsit" resultType="int">
-        SELECT count(*) FROM user where phonenumber =#{user.phoneNumber} or username = #{user.username};
+
+    <select id="countUserExsit" resultType="int">
+        SELECT count(*)
+        FROM user
+        where username = #{user.username}
+           or phoneNumber = #{user.phoneNumber};
     </select>
 
-    <select id="FindUserByUsername"  resultType="com.example.demo.passport.entitys.User"  >
-              SELECT * FROM user where username=#{ username}  limit 1
+    <select id="findUserByUsername" resultType="com.example.demo.passport.entitys.User">
+        SELECT *
+        FROM user
+        where username = #{username};
     </select>
 
-    <update id="UpdatePasswordByPhoneNumber" >
-        UPDATE user SET password=#{password}  WHERE phonenumber=#{phoneNumber}  LIMIT 1
-
+    <update id="updatePasswordByPhoneNumber">
+        UPDATE user
+        SET password = #{password}
+        where phoneNumber = #{phoneNumber};
     </update>
 
-    <select id="FindUserByPhoneNumber" resultType="com.example.demo.passport.entitys.User">
-        SELECT * FROM user where phonenumber=#{phonenumber}  limit 1
-
-    </select>
-
-    <!-- 查询 -->
-    <select id="queryUserByUsername" parameterType="string"  resultType="com.example.demo.passport.entitys.User">
-        SELECT * from user where username = #{username}
-    </select>
-    <!-- 查询 -->
-    <select id="findUserById" parameterType="int"  resultType="com.example.demo.passport.entitys.User">
-        SELECT * from user where id=#{id}
-    </select>
-
-
-
-
+    <delete id="deleteById">
+        delete
+        from user
+        where id = #{id};
+    </delete>
 
 
 </mapper>

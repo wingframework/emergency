@@ -2,11 +2,17 @@ package com.example.demo.Staff.Dto;
 
 import lombok.Data;
 
+import javax.validation.constraints.NotNull;
+
 @Data
 public class UpdateStaffDto {
+    @NotNull(message = "用户名必填")
     private String username;
+    @NotNull(message="值班人员姓名必填")
     private String nickname;
+    @NotNull(message="只能是值班领导或者普通员工")
     private String job;
+    @NotNull(message = "只能是A组或B组或C组或D组")
     private String groupname;
 
     public String getUsername() {

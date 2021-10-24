@@ -5,7 +5,7 @@ import com.example.demo.Staff.entitys.Staff;
 import java.util.List;
 
 
-
+           // 查询值班人员结果的一个界面显示   Dto都是一个界面的显示
 public class StaffQueryOutput {
    private List<Staff> data;
 

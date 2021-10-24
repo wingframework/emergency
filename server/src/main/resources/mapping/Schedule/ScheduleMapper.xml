@@ -6,8 +6,32 @@
 <!--        values(#{staff.username},#{staff.nickname}, #{staff.job},#{staff.groupname},#{staff.phonenumber}  )-->
 
 <!--    </insert>-->
+<!--      1、  这段代码的作用是查出了一个月从1号到最后一天  最后一句分组是不是多余了-->
+    <select id="ScheduleDateGroupByDate" resultType="java.util.Date">
+        SELECT date FROM springboot.schedule
+        where  date > #{startDate} and date &lt; #{endDate}
+        group by date
+    </select>
 
+<!--    连表查出值班人员的昵称                -->
+<!--    SELECT schedule.date,staff.nickname FROM springboot.schedule left join  staff  on schedule.leaderStaffId = staff.id-->
+    <select id="scheduleWithStaffByDateRange" resultType="com.example.demo.Staff.Dto.StatOutputDto">
+        SELECT schedule.date,staff.nickname,schedule.classes FROM springboot.schedule
+            left join  staff  on schedule.leaderStaffId = staff.id
+        where
+        date &gt; #{startDate} and date &lt; #{endDate}
+            and schedule.classes='早班'
+    </select>
 
+    <select id="selectScheduleByDateRange" resultType="com.example.demo.Staff.entitys.Schedule">
+        SELECT * FROM springboot.schedule
+        where    date &gt; #{dateRange.startDate} and date &lt; #{dateRange.endDate}
+
+    <if test="classes!=null">
+        and  classes = #{classes}
+    </if>
+;
+    </select>
 
     <insert id="Create" >
         insert  into schedule (leaderStaffId,peopleStaffId,classes,date,createAt,lastUpdateAt)
@@ -29,6 +53,8 @@
     </select>
 
 
+    
+    
 <!--    <select id="CountUserExsit" resultType="int">-->
 <!--        SELECT count(*) FROM user where phonenumber =#{user.phonenumber} or username = #{user.username};-->
 <!--    </select>-->

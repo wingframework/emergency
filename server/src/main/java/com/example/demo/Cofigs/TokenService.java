@@ -17,14 +17,14 @@ public class TokenService {
     UserService userService;
     @Autowired
     HttpServletRequest httpServletRequest;
-    public User getUser(){
-
-        String token = httpServletRequest.getHeader("token");// 从 http 请求头中取出 token
-
-        int  userId = Integer.parseInt(JWT.decode(token).getAudience().get(0));
-        return     userService.findUserById(userId);
-
-    }
+//    public User getUser(){
+//
+//        String token = httpServletRequest.getHeader("token");// 从 http 请求头中取出 token
+//
+//        int  userId = Integer.parseInt(JWT.decode(token).getAudience().get(0));
+//        return     userService.findUserById(userId);
+//
+//    }
     public String getToken(User user) {
         String token="";
         token= JWT.create().withAudience(user.getId()+"")

@@ -1,30 +1,18 @@
 package com.example.demo.passport.Dto;
 
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.Data;
+import org.hibernate.validator.constraints.Length;
 
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-@ApiModel("用户登录dto")
-//@Data
+
 public class UserLoginDto {
     @ApiModelProperty("用户名")
-    @NotNull
-    @NotBlank
-    private  String username;
-    @NotNull
-    private  String password;
-
+    @NotNull(message="用户名必填")
+    private String username;
+    @NotNull(message="密码必填")
+    private String password;
+    @Length(min=4,max = 4)
     private String code;
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
 
     public String getUsername() {
         return username;
@@ -40,5 +28,13 @@ public class UserLoginDto {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 }

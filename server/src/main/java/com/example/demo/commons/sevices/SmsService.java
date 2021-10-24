@@ -4,15 +4,11 @@ import com.aliyun.dysmsapi20170525.Client;
 import com.aliyun.dysmsapi20170525.models.SendSmsRequest;
 import com.aliyun.teaopenapi.models.Config;
 import com.example.demo.Cofigs.Rtn;
-import com.example.demo.commons.Controllers.SmsController;
 import com.example.demo.commons.mappers.SmsMapper;
-import com.example.demo.passport.Dto.QuerySentSmsExpire;
-import com.example.demo.passport.Dto.SentSmsInput;
+import com.example.demo.passport.Dto.QuerySentSmsNotExpire;
 import com.example.demo.passport.entitys.Sms;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.Date;
 import java.util.List;
@@ -22,6 +18,7 @@ public class SmsService {
 
     @Autowired
       private SmsMapper smsMapper;
+
 
     /**
      * 使用AK&SK初始化账号Client
@@ -61,19 +58,18 @@ public class SmsService {
 
 
            //拿到近几分钟的最后一条短信  expire失效
-    public  Sms getLastSmsExpire(String phoneNumber,int min){
+    public  Sms getLastSmsNotExpire(String phoneNumber, int min,int type ){
 
-                                     // 不理解？  1000ms = 1s
+                                     //   1000ms = 1s
         Date now= new Date( new Date().getTime()-min*60*1000 );
-
                                      //当时说让写一个构造器  为了少写一些代码
-        QuerySentSmsExpire a = new QuerySentSmsExpire(now,phoneNumber);
+        QuerySentSmsNotExpire a = new QuerySentSmsNotExpire(now,phoneNumber);
        // List<Sms> list = smsMapper.querySentSmsExpire(new QuerySentSmsExpire(now,phone ) );
         List<Sms> list = smsMapper.querySentSmsExpire( a );
 
             //size是大小或者号码的意思
         // 以下不理解
-        if(list.size()>0) {
+         if(list.size()>0) {
             return list.get(0);
         }
         return  null;

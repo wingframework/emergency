@@ -3,14 +3,12 @@
 <mapper  namespace="com.example.demo.Staff.Mappers.StaffMapper"   >
     <insert id="Create" >
         insert  into staff (username,nickname,job,groupname,phonenumber)
-        values(#{staff.username},#{staff.nickname}, #{staff.job},#{staff.groupname},#{staff.phonenumber}  )
-
+        values(#{staff.username},#{staff.nickname}, #{staff.job},#{staff.groupname},#{staff.phonenumber} )
     </insert>
 
-    <select id="CountStaffExsit" resultType="int">
-        SELECT count(*) FROM staff where username =#{staff.username} or nickname = #{staff.nickname};
-    </select>
-
+      <select id="countStaffExsit" resultType="int">
+          select count(*) from staff where username =#{staff.username} or nickname = #{staff.nickname} ;
+      </select>
 
 
     <select id="All" resultType="com.example.demo.Staff.entitys.Staff">
@@ -35,31 +33,22 @@
         <if test="keyword!=null">
             where nickname like '%${keyword}%'
         </if>
-         ;
+               ;
     </select>
 
-<!--     查出不在值班人员列表中的用户-->
+<!--    查询可加入的值班人员的用户列表  查出不在值班人员列表中的用户3  用user表中用户1 减去 staff表中的用户2 ，                                        -->
 <!--    SELECT  user.* FROM springboot.user  left join springboot.staff   on staff.userId=user.id  where  staff.userId is null;-->
     <select id="queryNotStaffUser" resultType="com.example.demo.passport.entitys.User" >
         SELECT user.* FROM springboot.user left join springboot.staff  on staff.userId =  user.id   where  staff.userId   is null  ;
 
     </select>
 
-    <delete id="DeleteById">
-        delete
-        from staff
-        where id =#{id};
+    <delete id="deleteById">
+        delete  from staff where id =#{id};
     </delete>
 
-
-    <update id="DisableById">
+    <update id="enableById">
         UPDATE staff SET status = #{ enable } WHERE id = #{id};
-
     </update>
-
-
-
-
-
 
 </mapper>

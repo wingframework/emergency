@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.Rbac.Mappers.UserrMapper">
+    <insert id="UserrAdd">
+        insert into userr (abatarUrl, nickname, username, userUnit,phoneNumber,email,rbac,sex,status,func,password)
+        values (#{userr.abatarUrl}, #{userr.nickname}, #{userr.username}, #{userr.userUnit},#{userr.phoneNumber},#{userr.email},
+                #{userr.rbac},#{userr.sex},#{userr.status},#{userr.func},#{userr.password})
+    </insert>
+
+    <select id="findUserrByUsername" resultType="com.example.demo.Rbac.Entitys.Userr">
+        SELECT *
+        FROM userr
+        where username = #{username} limit 0,1
+        ;
+    </select>
+
+    <insert id="addUserrRoles" parameterType="list">
+        <foreach item="item" collection="list">
+            insert into userr_role (roleId,userId) values (#{item.roleId},#{item.userId})
+        </foreach>
+
+    </insert>
+
+    <select id="findRoleIdByUserrId" resultType="Integer">
+        SELECT roleId
+        FROM userr_role
+        where userId = #{userrId};
+    </select>
+
+    <delete id="deleteByUserrId">
+        delete
+        from userr
+        where id = #{id};
+    </delete>
+
+    <select id="findUserrById" resultType="com.example.demo.Rbac.Entitys.Userr">
+        SELECT *
+        FROM userr
+        where id = #{id} limit 0,1
+    </select>
+
+    <update id="resetPasswordById">
+        UPDATE userr
+        SET password=#{wurenji123}
+        where id = #{id};
+    </update>
+
+    <delete id="deleteById">
+        delete
+        from userr
+        where id = #{id};
+    </delete>
+
+    <select id="pageQueryByKeyword" resultType="com.example.demo.Rbac.Entitys.Userr">
+        SELECT * FROM userr
+        <if test="keyword!=null">
+            where (username) like '%${keyword}%'
+        </if>
+        limit ${page*pagesize},#{pagesize} ;
+    </select>
+
+    <select id="pageQueryByKeywordCount" resultType="int">
+        SELECT Count(*) FROM userr
+        <if test="keyword!=null">
+            where (username) like '%${keyword}%'
+        </if>
+        ;
+    </select>
+
+
+
+
+
+
+
+
+
+
+</mapper>

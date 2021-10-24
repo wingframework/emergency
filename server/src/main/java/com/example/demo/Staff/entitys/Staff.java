@@ -7,10 +7,20 @@ public class Staff {
     private int id;
     private String username;
     private String nickname;
+    private String job;
+    private String groupname;
+    private String phonenumber;
+    private boolean status;
+    private String userid;
+    private int enable;
 
+    public int getEnable() {
+        return enable;
+    }
 
-
-
+    public void setEnable(int enable) {
+        this.enable = enable;
+    }
 
     public String getUserid() {
         return userid;
@@ -44,11 +54,7 @@ public class Staff {
         this.phonenumber = phonenumber;
     }
 
-    private String job;
-    private String groupname;
-    private String phonenumber;
-    private boolean status;
-    private String userid;
+
 
 
     public int getId() {

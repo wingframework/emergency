@@ -11,12 +11,14 @@
 
 <!--    </select>-->
 
-
+<!--          查询的是5分钟之内的短信   假设现在是17点05 查询的是17点之后的短信         还没理解透-->
     <select id="querySentSmsExpire"  resultType="com.example.demo.passport.entitys.Sms" >
         SELECT * FROM springboot.sms
         where unix_timestamp(sms.sentAt) > unix_timestamp(#{sentAt})
-          and phoneNumber=#{phoneNumber} order by sentAt desc
+          and phoneNumber=#{phoneNumber} and type= #{type }    order by sentAt desc
     </select>
+
+
 
 
 </mapper>

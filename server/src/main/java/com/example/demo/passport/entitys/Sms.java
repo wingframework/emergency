@@ -1,7 +1,7 @@
 package com.example.demo.passport.entitys;
 
 import java.util.Date;
-
+       // sms是一个短息服务中心
 public class Sms {
       private String phonenumber;
       private String code;
