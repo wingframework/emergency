@@ -1,0 +1,11 @@
+type = "page"
+title = "sample1页面"
+[body]
+title = "sample1表单"
+type = "form"
+mode = "inline"
+[[body.body]]
+type = "input-text" #文本输入框
+size = "small"
+name = "username"
+label = "用户名"

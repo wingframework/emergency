@@ -5,8 +5,9 @@ import { CommonCom, Page } from 'src/app/shared/dynamic-ui/typings';
 export class Sample1Component {
   sampleForm: CommonCom = {
     type: 'page',
+    title: 'sample1页面',
     body: {
-      title: 'sample1页面',
+      title: 'sample1表单',
 
       type: 'form',
       mode: 'inline',

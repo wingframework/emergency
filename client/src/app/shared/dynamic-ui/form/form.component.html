@@ -1,9 +1,14 @@
-<h1>form:{{ body.title }}</h1>
-<!-- {{ body | json }} -->
-<form nz-form [formGroup]="formGroup" [nzLayout]="body.mode || 'inline'">
-    <ng-container *ngFor="let item of body.body">
-        <dynamic-ui [body]="item" [formGroup]="formGroup"></dynamic-ui>
-    </ng-container>
-</form>
+<div class="group">
+    <h4 class="group-title">{{ body.title }}</h4>
+    <form nz-form [formGroup]="formGroup" [nzLayout]="body.mode || 'vertical'" class="form-content">
+        <ng-container *ngFor="let item of body.body">
+            <dynamic-ui class="form-field" [body]="item" [formGroup]="formGroup"></dynamic-ui>
+        </ng-container>
 
-<!-- <form (ngSubmit)="onSubmit()" [formGroup]="form"> </form> -->
+
+    </form>
+    <div style="text-align: right;" class="form-field">
+        <button nz-button nzType="primary">提交</button>
+    </div>
+
+</div>

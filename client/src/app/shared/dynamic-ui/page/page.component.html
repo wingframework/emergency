@@ -1,3 +1,7 @@
-<h2>page</h2>
+<!-- <page-header [title]="body.title">
+</page-header> -->
 
-<dynamic-ui [body]="body.body"></dynamic-ui>
+<nz-card>
+    <h2>{{body.title}}</h2>
+    <dynamic-ui [body]="body.body"></dynamic-ui>
+</nz-card>

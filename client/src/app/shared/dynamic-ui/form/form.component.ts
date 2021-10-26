@@ -4,7 +4,7 @@ import { FormGroup } from '@angular/forms';
 import { DynamicFormControlService } from '../core/dynamic-form-control.service';
 import { Com, CommonCom, Form } from '../typings';
 
-@Component({ selector: 'meta-form', templateUrl: './form.component.html' })
+@Component({ selector: 'meta-form', templateUrl: './form.component.html', styleUrls: ['./form.component.css'] })
 export class FormComponent {
   @Input() body!: Form;
   @Input() formGroup!: FormGroup;
