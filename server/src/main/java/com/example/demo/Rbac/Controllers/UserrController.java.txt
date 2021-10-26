@@ -2,10 +2,10 @@
 //
 //import com.example.demo.AutoMapper;
 //import com.example.demo.Cofigs.Rtn;
-//import com.example.demo.Rbac.Dto.UserrAddInputDto;
+//import com.example.demo.Rbac.Dto.UserAddInputDto;
 //import com.example.demo.Rbac.Dto.UserrQueryInput;
 //import com.example.demo.Rbac.Dto.UserrQueryOutput;
-//import com.example.demo.Rbac.Dto.UserrUpdateDto;
+//import com.example.demo.Rbac.Dto.UserUpdateDto;
 //import com.example.demo.Rbac.Entitys.User;
 //import com.example.demo.Rbac.Mappers.UserrMapper;
 //import io.swagger.annotations.ApiOperation;
@@ -23,16 +23,16 @@
 //    private UserrMapper userrMapper;
 //
 //    @PostMapping("UserrAdd")
-//    public Rtn<Boolean> UserrAdd(@RequestBody UserrAddInputDto userrAddInputDto) {
-//        User userr = AutoMapper.INSTANCE.addDtoToUserr(userrAddInputDto);
+//    public Rtn<Boolean> UserrAdd(@RequestBody UserrAddInputDto userAddInputDto) {
+//        User userr = AutoMapper.INSTANCE.addDtoToUserr(userAddInputDto);
 //        userrMapper.UserrAdd(userr);
 //
-//        User userrByUsername = userrMapper.findUserrByUsername(userrAddInputDto.getUsername());
+//        User userrByUsername = userrMapper.findUserrByUsername(userAddInputDto.getUsername());
 //        List<UserrRole> userrRoles = new LinkedList<>();
-//        for (int i = 0; i < userrAddInputDto.getRoleIdList().size(); i++) {
+//        for (int i = 0; i < userAddInputDto.getRoleIdList().size(); i++) {
 //            UserrRole userrRole = new UserrRole();
 //            userrRole.setUserId(userrByUsername.getId());
-//            userrRole.setRoleId(userrAddInputDto.getRoleIdList().get(i));
+//            userrRole.setRoleId(userAddInputDto.getRoleIdList().get(i));
 //            userrRoles.add(userrRole);
 //        }
 //        userrMapper.addUserrRoles(userrRoles);

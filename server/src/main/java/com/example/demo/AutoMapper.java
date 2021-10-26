@@ -2,7 +2,9 @@ package com.example.demo;
 
 import com.example.demo.Rbac.Dto.RoleAddInputDto;
 
-import com.example.demo.Rbac.Dto.UserrAddInputDto;
+import com.example.demo.Rbac.Dto.RoleUpdateDto;
+import com.example.demo.Rbac.Dto.UserAddInputDto;
+import com.example.demo.Rbac.Dto.UserUpdateDto;
 import com.example.demo.Rbac.Entitys.Role;
 import com.example.demo.Rbac.Entitys.User;
 import com.example.demo.Staff.Dto.AddStaffDto;
@@ -29,8 +31,10 @@ public interface AutoMapper {
     Staff AddDtoToStaff(AddStaffDto addStaffDto);
     Staff UpdateDtoToStaff(UpdateStaffDto updateStaffDto);
     Role roleAddDtoToRole(RoleAddInputDto addRoleDto);
-   // Role updateDtoToRole(UpdateRoleDto updateRoleDto);
-    User addDtoToUserr(UserrAddInputDto userrAddInputDto);
+    Role updateDtoToRole(RoleUpdateDto roleUpdateDto);
+    User addDtoToUser(UserAddInputDto userAddInputDto);
+    User updateDtoToUser(UserUpdateDto userUpdateDto);
+
     // Userr updateDtoToUserr(UserUpdateDto userUpdateDto);
 
 

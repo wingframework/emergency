@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("api/user")
-public class UserController {
+@RequestMapping("api/passport/passport")
+public class PassportController {
     @Autowired
     private UserMapper userMapper;
     @Autowired

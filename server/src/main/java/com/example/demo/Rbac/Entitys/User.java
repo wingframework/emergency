@@ -2,6 +2,7 @@ package com.example.demo.Rbac.Entitys;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "rbac_user")
@@ -27,12 +28,46 @@ public class User {
     private String password;
     private String func;
 
-    @Column(name = "role_id")
+    @Column(name = "role_id",nullable = true)
     private int roleId;
 
     @OneToOne(cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
     @JoinColumn(name = "role_id", referencedColumnName = "id", insertable = false, updatable = false)
     private Role role;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "rbac_user_role", joinColumns = {@JoinColumn(name = "userId", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "roleId", referencedColumnName = "id")})
+    private List<Role> roleList;
+
+    public int getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(int roleId) {
+        this.roleId = roleId;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public List<Role> getRoleList() {
+        return roleList;
+    }
+
+    public void setRoleList(List<Role> roleList) {
+        this.roleList = roleList;
+    }
+//    @ManyToMany(fetch = FetchType.LAZY)
+//    @JoinTable(name = "rbac_role_menu", joinColumns = {@JoinColumn(name = "roleId", referencedColumnName = "id")},
+//            inverseJoinColumns = {@JoinColumn(name = "menuId", referencedColumnName = "id")})
+//    private List<Menu> menuList;
+
 
     public int getId() {
         return id;

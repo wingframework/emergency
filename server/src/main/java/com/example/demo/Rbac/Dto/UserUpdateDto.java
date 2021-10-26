@@ -2,7 +2,7 @@ package com.example.demo.Rbac.Dto;
 
 import java.util.List;
 
-public class UserrUpdateDto {
+public class UserUpdateDto {
     private int id;
     private String abatarUrl;
     private String nickname;

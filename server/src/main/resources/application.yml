@@ -9,6 +9,10 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
+#  security:
+#    user:
+#      name: admin
+#      password: admin123
 mybatis:
   mapper-locations: classpath:mapping/**/*Mapper.xml
   type-aliases-package: com.example.demo

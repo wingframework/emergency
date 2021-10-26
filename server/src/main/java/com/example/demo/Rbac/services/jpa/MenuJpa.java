@@ -8,4 +8,5 @@ import java.util.List;
 public interface MenuJpa  extends BaseRepository<Menu,Integer> {
 
     List<Menu>  findByIdIn(List<Integer> ids);
+
 }
