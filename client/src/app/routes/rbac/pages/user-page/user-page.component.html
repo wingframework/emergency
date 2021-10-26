@@ -1,0 +1,5 @@
+<div *ngIf="allTreeData">{{allTreeData|json}}</div>
+<hr>
+<div *ngIf="notAllTreeData">{{notAllTreeData|json}}</div>
+<button nz-button (click)="allToTree()">全部成树</button>
+<button nz-button nzType="primary" (click)="logEnum()">迭代树 </button>

@@ -1,0 +1,14 @@
+@host = http://127.0.0.1
+@cookie =JSESSIONID=CE6151F6EF6B2492D78CC885D1C0A4DF2;
+
+
+POST  {{host}}/user/login
+Content-Type: application/x-www-form-urlencoded
+
+username=admin&password=123
+
+
+###
+
+{{host}}/api/staff/list
+Cookie: {{cookie}}

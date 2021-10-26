@@ -10,6 +10,17 @@
   },
   "menu": [
     {
+      "text": "角色权限",
+      "i18n": "menu.rbac",
+      "children": [
+        {
+          "text": "用户",
+          "i18n": "menu.rbac.user",
+          "link":"/rbac/user"
+        }
+      ]
+    },
+    {
       "text": "主导航",
       "i18n": "menu.main",
       "group": true,
@@ -41,7 +52,7 @@
               "i18n": "menu.dashboard.workplace"
             }
           ]
-        }, 
+        },
         {
           "text": "快捷菜单",
           "i18n": "menu.shortcut",
@@ -380,25 +391,23 @@
               "reuse": false
             },
             {
-              "link":"/dynamic-demo/sample1",
-              "text": "测试1",
-              "i18n": "menu.dashboard",
-              "icon": "anticon-dashboard"
-                },
-            {
-              "link":"/dynamic-demo/sample1",
+              "link": "/dynamic-demo/sample1",
               "text": "测试1",
               "i18n": "menu.dashboard",
               "icon": "anticon-dashboard"
             },
-
-{
-              "link":"/dynamic-demo/toml-sample",
+            {
+              "link": "/dynamic-demo/sample1",
+              "text": "测试1",
+              "i18n": "menu.dashboard",
+              "icon": "anticon-dashboard"
+            },
+            {
+              "link": "/dynamic-demo/toml-sample",
               "text": "toml案例",
               "i18n": "menu.tomlSample",
               "icon": "anticon-dashboard"
             }
-            
           ]
         },
         {

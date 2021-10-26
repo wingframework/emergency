@@ -71,6 +71,13 @@
   "menu.extras.helpcenter": "幫助中心",
   "menu.extras.settings": "設置",
   "menu.extras.poi": "門店",
+  "menu.rbac": "角色权限",
+  "menu.rbac.user": "用户",
+  "menu.rbac.menu": "菜单",
+  "menu.rbac.org": "组织",
+  "menu.rbac.role": "组织",
+  
+  
   "app.analysis.test": "工專路 {{no}} 號店",
   "app.analysis.introduce": "指標說明",
   "app.analysis.total-sales": "總銷售額",
