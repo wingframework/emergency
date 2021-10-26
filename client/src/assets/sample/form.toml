@@ -1,9 +1,11 @@
 type = "page"
 title = "sample1页面"
+expand = true
 [body]
 title = "sample1表单"
-type = "form"
+type = "meta-form"
 mode = "inline"
+expand = true
 [[body.body]]
 type = "input-text" #文本输入框
 size = "small"

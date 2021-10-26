@@ -9,6 +9,8 @@ enum UiType {
 }
 @Component({ selector: 'toml-sample', templateUrl: './toml-samples.component.html', styleUrls: ['./toml-samples.component.css'] })
 export class TomlSamplesComponent {
+  /**支持的控件列表 */
+
   selectedNode?: { title: string; link: string };
   nodes: any;
   toml!: string;
@@ -37,7 +39,6 @@ export class TomlSamplesComponent {
       this.toml = rtn;
       this.json = toml.parse(rtn);
       this.body = this.json;
-      debugger;
     });
   }
   copyText(value: string) {
@@ -46,5 +47,8 @@ export class TomlSamplesComponent {
     oInput.value = value;
     oInput.select(); // 选择对象
     document.execCommand('Copy'); // 执行浏览器复制命令
+  }
+  refreshHighlight() {
+    hljs.highlightAll();
   }
 }

@@ -34,7 +34,7 @@ export class DynamicUiComponent {
     viewContainerRef.clear();
 
     const componentRef = viewContainerRef.createComponent<any>(componentFactory);
-    componentRef.instance.body = this.body;
+    Object.assign(componentRef.instance, this.body);
     if (this.formGroup) {
       componentRef.instance.formGroup = this.formGroup;
     }

@@ -1,0 +1,14 @@
+name = "模板列表"
+[[templates]]
+name = "input-text"
+path = "./controlls/input-text/input-text.toml"
+
+
+##页面模板
+[[templates]]
+name = "page"
+path = "./pages/page/page.toml"
+##页面模板
+[[templates]]
+name = "meta-form"
+path = "./views/form/form.toml"

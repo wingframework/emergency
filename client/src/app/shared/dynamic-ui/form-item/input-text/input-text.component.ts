@@ -11,7 +11,12 @@ import { InputText } from '../../typings';
 export class InputTextComponent implements OnInit {
   @Input() body!: any;
   @Input() formGroup!: FormGroup;
-  size!: NzSizeLDSType;
+  @Input() required?: boolean;
+  @Input() label?: string | false;
+  @Input() labelRemark?: string;
+  @Input() name!: string;
+  @Input() size!: NzSizeLDSType;
+  @Input() disabled?: boolean;
   ngOnInit(): void {
     switch (this.body.size) {
       case 'lg':
@@ -28,6 +33,6 @@ export class InputTextComponent implements OnInit {
 
   get isValid() {
     debugger;
-    return this.formGroup.controls[this.body.name].valid;
+    return this.formGroup.controls[this.name].valid;
   }
 }

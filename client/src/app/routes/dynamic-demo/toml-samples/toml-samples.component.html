@@ -3,7 +3,8 @@
 </div>
 
 
-<nz-tabset>
+
+<nz-tabset (nzSelectChange)="refreshHighlight()">
     <nz-tab [nzTitle]="title">
         <ng-container *ngIf="body">
 
@@ -23,10 +24,16 @@
         <div class="source-code-block">
             <i nz-icon nzType="copy" class="copy-icon" nzTheme="outline" (click)="copyText(toml)"></i>
             <pre class="toml">
+                <code class="language-toml">
 {{toml}}
+                </code>
+
         </pre>
         </div>
 
     </nz-tab>
-    <nz-tab nzTitle="源码"></nz-tab>
+    <nz-tab nzTitle="源码">
+        <component-tree [json]="body" *ngIf="body"></component-tree>
+
+    </nz-tab>
 </nz-tabset>
