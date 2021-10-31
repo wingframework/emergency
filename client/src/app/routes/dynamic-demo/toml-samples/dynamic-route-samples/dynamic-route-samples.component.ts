@@ -11,6 +11,7 @@ import * as toml from 'toml';
 })
 export class DynamicRouteSamplesComponent implements AfterViewInit {
   file!: string;
+  mdFile!: string;
   body!: any;
   tomlText!: string;
   showAlainCode = false;
@@ -22,8 +23,9 @@ export class DynamicRouteSamplesComponent implements AfterViewInit {
     private copyService: CopyService,
     private msgService: NzMessageService
   ) {
-    this.route.params.subscribe(p => {
+    this.route.queryParams.subscribe(p => {
       this.file = p.file;
+      this.mdFile = `/assets/sample/` + this.file.split('.').shift() + '.md';
       this.reload();
     });
   }
@@ -31,11 +33,13 @@ export class DynamicRouteSamplesComponent implements AfterViewInit {
 
   async reload() {
     this.tomlText = await this.httpClient.get(`/assets/sample/` + this.file, { responseType: 'text' }).toPromise();
-    debugger;
-    this.body = toml.parse(this.tomlText);
-    debugger;
-    let amisScoped = amis.embed(this.sampleEl.nativeElement, this.body);
-    this.refreshHighlight();
+    this.body = null;
+    setTimeout(() => {
+      this.body = toml.parse(this.tomlText);
+      debugger;
+      let amisScoped = amis.embed(this.sampleEl.nativeElement, this.body);
+      this.refreshHighlight();
+    }, 1000);
   }
   refreshHighlight() {
     setTimeout(() => {
