@@ -24,6 +24,7 @@ export class DynamicComponent {
   ngOnDestroy() {}
 
   loadComponent() {
+    debugger;
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(
       this.componentRegisterMappingFactory.getComponentByName(this.body.type) as any
     );

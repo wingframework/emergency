@@ -1,23 +1,23 @@
-<div style="display: flex;">
-    <div style="width: 300px;flex-shrink: 0;">
-        <div>
-            <button nz-button (click)="compile()" nzType="primary">编译</button>
-        </div>
-        <div>
-            <nz-tree [nzData]="nodes" nzDraggable nzBlockNode>
-            </nz-tree>
-        </div>
-    </div>
+<div>
+
     <div style="width: 100%;">
         <nz-tabset (nzSelectChange)="refreshHighlight()">
             <nz-tab [nzTitle]="file.filename" *ngFor="let file of files">
                 <pre class="source-code-block">
                     <i nz-icon nzType="copy" class="copy-icon" nzTheme="outline" (click)="copyText(file.content)"></i>
-                    <code class="language-html" >
+                    <code class="language-{{file.fileType}}" >
 {{file.content}}
                     </code>
 
                 </pre>
+            </nz-tab>
+            <nz-tab nzTitle="组件树">
+                <div style="width: 100%;flex-shrink: 0;">
+                    <div>
+                        <nz-tree [nzData]="nodes" nzDraggable nzBlockNode>
+                        </nz-tree>
+                    </div>
+                </div>
             </nz-tab>
         </nz-tabset>
     </div>

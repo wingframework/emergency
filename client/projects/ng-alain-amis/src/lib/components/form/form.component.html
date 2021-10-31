@@ -1,1 +1,14 @@
-ng-alain form
+<div class="group">
+    <h4 class="group-title">{{ title }}</h4>
+    <form nz-form [formGroup]="formGroup" [nzLayout]="mode || 'vertical'" class="form-content">
+        <ng-container *ngFor="let item of body">
+            <amis-dynamic class="form-field" [body]="item" [formGroup]="formGroup"></amis-dynamic>
+        </ng-container>
+
+
+    </form>
+    <div style="text-align: right;" class="form-field">
+        <button nz-button nzType="primary">提交</button>
+    </div>
+
+</div>

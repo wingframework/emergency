@@ -1,1 +1,18 @@
-input-text
+<nz-form-item>
+    <nz-form-label [nzRequired]="required" *ngIf="label !== false">{{ label }}
+        <ng-container *ngIf="labelRemark">
+            <i nz-icon nzType="question-circle" nzTheme="fill" [nzTooltipTitle]="labelRemark" nzTooltipPlacement="topLeft" nz-tooltip></i>
+        </ng-container>
+    </nz-form-label>
+    <nz-form-control nzHasFeedback nzValidatingTip="校验中">
+        <div [formGroup]="formGroup">
+            <ng-container *ngIf="!disabled">
+                <input type="text" nz-input [nzSize]="$any(size)" [formControlName]="name" />
+            </ng-container>
+
+            <ng-container *ngIf="disabled">
+                <input type="text" nz-input [disabled]="true" [nzSize]="$any(size)" [formControlName]="name" />
+            </ng-container>
+        </div>
+    </nz-form-control>
+</nz-form-item>

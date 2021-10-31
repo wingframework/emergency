@@ -1,12 +1,23 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import { CodeCompileService } from '../services/code-compile.service';
 import * as toml from 'toml';
 import * as path from 'path-browserify';
 import { HttpClient } from '@angular/common/http';
 
-interface FileResult {
-  filename: string;
-  content: string;
+class FileResult {
+  constructor(public filename: string, public content: string) {}
+  get fileType() {
+    switch (this.filename.split('.').pop()) {
+      case 'ts':
+        return 'typescript';
+      case 'html':
+        return 'html';
+      case 'css':
+        return 'css';
+      default:
+        return 'html';
+    }
+  }
 }
 
 interface Control {
@@ -18,8 +29,11 @@ interface Control {
 }
 
 @Component({ selector: 'component-tree', templateUrl: './component-tree.component.html' })
-export class ComponentTree implements OnInit {
+export class ComponentTree implements OnInit, AfterViewInit {
   constructor(private http: HttpClient) {}
+  ngAfterViewInit(): void {
+    this.compile();
+  }
   @Input() json: any;
   nodes: any[] = [];
   controls: Control[] = [];
@@ -67,7 +81,7 @@ export class ComponentTree implements OnInit {
     controls.forEach(c => {
       let template = Handlebars.compile(c.content as string);
       let content = template(data);
-      result.push({ filename: c.name + '.' + c.type, content });
+      result.push(new FileResult(c.name + '.' + c.type, content));
     });
     return result;
   }
@@ -120,10 +134,9 @@ export class ComponentTree implements OnInit {
       }
     }
     this.files = await this.codeRender(this.json);
-    debugger;
     setTimeout(() => {
       hljs.highlightAll();
-    }, 1000);
+    }, 2000);
   }
 
   async loadTemplateText(url: string) {

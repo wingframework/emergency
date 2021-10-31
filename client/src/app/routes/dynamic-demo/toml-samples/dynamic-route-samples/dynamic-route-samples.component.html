@@ -1,0 +1,43 @@
+<nz-tabset>
+    <nz-tab nzTitle="配置文件">
+        <div style="padding: 6px;">
+            <nz-tag [nzColor]="settingFormat=='toml'?'#87d068':'green'" (click)="settingFormat='toml';refreshHighlight()">TOML</nz-tag>
+            <nz-tag [nzColor]="settingFormat=='json'?'#87d068':'green'" (click)="settingFormat='json';refreshHighlight()">JSON</nz-tag>
+        </div>
+
+        <div class="source-code-block" *ngIf="settingFormat=='json'">
+            <i nz-icon nzType="copy" class="copy-icon" nzTheme="outline" (click)="copyText(stringify(body))"></i>
+            <pre>
+<code class="language-json">
+{{ body | json }}    
+</code>            
+              
+    </pre>
+        </div>
+
+        <div class="source-code-block" *ngIf="settingFormat=='toml'">
+            <i nz-icon nzType="copy" style="top:40px" class="copy-icon" nzTheme="outline" (click)="copyText(tomlText)"></i>
+            <pre>
+        <code class="language-toml">
+{{tomlText}}
+        </code>
+</pre>
+        </div>
+    </nz-tab>
+    <nz-tab nzTitle="alain">
+        <div style="position: relative;" *ngIf="body">
+            <i nz-icon nzType="code" (click)="showAlainCode=!showAlainCode" class="code-switch" nzTheme="outline"></i>
+            <div>
+                <amis-dynamic [body]="body"></amis-dynamic>
+            </div>
+            <div *ngIf="showAlainCode">
+                <component-tree [json]="body"></component-tree>
+            </div>
+
+
+        </div>
+    </nz-tab>
+    <nz-tab nzTitle="amis">
+        <div #sample></div>
+    </nz-tab>
+</nz-tabset>

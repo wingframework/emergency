@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { CopyService } from 'src/app/shared/utils/copy.service';
 import * as toml from 'toml';
 
 enum UiType {
@@ -19,7 +20,7 @@ export class TomlSamplesComponent {
   body?: any;
   UiType = UiType;
   uiType: UiType = UiType.AntDeisgn;
-  constructor(private activeRoute: ActivatedRoute, private http: HttpClient) {
+  constructor(private activeRoute: ActivatedRoute, private http: HttpClient, private copyService: CopyService) {
     this.activeRoute.params.subscribe(rtn => {
       console.log(location.hash);
     });
@@ -29,7 +30,6 @@ export class TomlSamplesComponent {
       let data = toml.parse(rtn);
       console.log(data);
       this.nodes = [data];
-      debugger;
     });
   }
   selectNode(node: { origin: { title: string; link: string } }) {
@@ -42,11 +42,7 @@ export class TomlSamplesComponent {
     });
   }
   copyText(value: string) {
-    var oInput = document.createElement('textarea');
-    document.body.appendChild(oInput);
-    oInput.value = value;
-    oInput.select(); // 选择对象
-    document.execCommand('Copy'); // 执行浏览器复制命令
+    this.copyService.copyText(value);
   }
   refreshHighlight() {
     hljs.highlightAll();

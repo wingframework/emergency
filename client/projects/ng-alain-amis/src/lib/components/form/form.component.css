@@ -5,6 +5,9 @@
 .group-title {
     background-color: rgb(236, 239, 248);
     padding: 12px;
+    background: rgb(245, 245, 245);
+    color: rgb(102, 102, 102);
+    font-weight: 400;
 }
 
 .form-field {

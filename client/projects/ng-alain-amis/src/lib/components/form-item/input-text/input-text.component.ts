@@ -10,10 +10,10 @@ export class InputTextComponent {
   @Input() label?: string | false;
   @Input() labelRemark?: string;
   @Input() name!: string;
-  @Input() size!: NzSizeLDSType;
+  @Input() size!: NzSizeLDSType | 'lg' | 'md' | 'sm';
   @Input() disabled?: boolean;
   ngOnInit(): void {
-    switch (this.body.size) {
+    switch (this.size) {
       case 'lg':
         this.size = 'large';
         break;

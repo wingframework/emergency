@@ -21,6 +21,22 @@
       ]
     },
     {
+      "text": "案例",
+      "i18n": "案例",
+      "children": [
+        {
+          "text": "表单案例",
+          "i18n": "表单案例",
+         
+          "children":[
+            { "link":"/dynamic-demo/dynamic/form.toml",   "text": "基本表单","i18n": "基本表单"},
+            { "link":"/dynamic-demo/dynamic/label-form.toml",   "text": "基本表单","i18n": "表单标签"}
+            
+          ]
+        }
+      ]
+    },
+    {
       "text": "主导航",
       "i18n": "menu.main",
       "group": true,
@@ -121,6 +137,8 @@
               "link": "/delon/form",
               "i18n": "menu.delon.form"
             },
+           
+            
             {
               "text": "Simple Table",
               "link": "/delon/st",

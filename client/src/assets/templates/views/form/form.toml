@@ -1,12 +1,12 @@
 [[templates]]
-name = "meta-form"
+name = "form"
 type = "html"
 path = "form.component.html"
 [[templates]]
-name = "meta-form"
+name = "form"
 type = "ts"
 path = "form.component.ts"
 [[templates]]
-name = "meta-form"
+name = "form"
 type = "css"
 path = "form.component.css"
