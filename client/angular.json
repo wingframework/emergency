@@ -116,6 +116,37 @@
           }
         }
       }
+    },
+    "ng-alain-amis": {
+      "projectType": "library",
+      "root": "projects/ng-alain-amis",
+      "sourceRoot": "projects/ng-alain-amis/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ng-alain-amis/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ng-alain-amis/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ng-alain-amis/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ng-alain-amis/src/test.ts",
+            "tsConfig": "projects/ng-alain-amis/tsconfig.spec.json",
+            "karmaConfig": "projects/ng-alain-amis/karma.conf.js"
+          }
+        }
+      }
     }
   },
   "defaultProject": "ng-alain"

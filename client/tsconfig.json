@@ -19,7 +19,13 @@
     "paths": {
       "@shared": ["src/app/shared/index"],
       "@core": ["src/app/core/index"],
-      "@env/*": ["src/environments/*"],
+      "@env/*": [
+        "src/environments/*"
+      ],
+      "ng-alain-amis": [
+        "dist/ng-alain-amis/ng-alain-amis",
+        "dist/ng-alain-amis"
+      ],
 
     },
     

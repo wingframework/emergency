@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { DelonACLModule } from '@delon/acl';
 import { DelonFormModule } from '@delon/form';
 import { AlainThemeModule } from '@delon/theme';
+import { NgAlainAmisModule } from 'ng-alain-amis';
 
 import { SHARED_DELON_MODULES } from './shared-delon.module';
 import { SHARED_ZORRO_MODULES } from './shared-zorro.module';
@@ -41,6 +42,7 @@ const DIRECTIVES: Array<Type<any>> = [];
     ...DIRECTIVES
   ],
   exports: [
+    NgAlainAmisModule,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,

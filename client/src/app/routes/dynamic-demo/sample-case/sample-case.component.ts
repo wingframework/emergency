@@ -7,7 +7,6 @@ import { AfterViewInit, Component, ElementRef, Input, ViewChild } from '@angular
 export class SampleCaseComponent implements AfterViewInit {
   @ViewChild('sample') sampleEl!: ElementRef<HTMLDivElement>;
   ngAfterViewInit(): void {
-    debugger;
     let amisScoped = amis.embed(this.sampleEl.nativeElement, this.json);
   }
   @Input() title!: string;

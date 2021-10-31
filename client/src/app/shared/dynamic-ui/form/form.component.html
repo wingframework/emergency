@@ -2,7 +2,7 @@
     <h4 class="group-title">{{ title }}</h4>
     <form nz-form [formGroup]="formGroup" [nzLayout]="mode || 'vertical'" class="form-content">
         <ng-container *ngFor="let item of body">
-            <dynamic-ui class="form-field" [body]="item" [formGroup]="formGroup"></dynamic-ui>
+            <amis-dynamic class="form-field" [body]="item" [formGroup]="formGroup"></amis-dynamic>
         </ng-container>
 
 

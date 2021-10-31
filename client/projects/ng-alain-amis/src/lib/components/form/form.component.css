@@ -1,0 +1,16 @@
+.group {
+    border: 1px solid #e2e2e2;
+}
+
+.group-title {
+    background-color: rgb(236, 239, 248);
+    padding: 12px;
+}
+
+.form-field {
+    padding: 12px;
+}
+
+.form-content {
+    border-bottom: 1px solid #e2e2e2;
+}

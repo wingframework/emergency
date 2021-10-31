@@ -1,4 +1,6 @@
 <div style="text-align: right;">
+    <!-- <amis-page [body]="{title:'页面'}"></amis-page> -->
+    <amis-dynamic [body]="{title:'页面',type:'page'}"></amis-dynamic>
     <toml-case-menu [nodes]="nodes" *ngIf="nodes" (OnSelectNode)="selectNode($event)"></toml-case-menu>
 </div>
 
@@ -15,7 +17,7 @@
                 </nz-radio-group>
             </div>
 
-            <dynamic-ui [body]="body" *ngIf="uiType==UiType.AntDeisgn"></dynamic-ui>
+            <!-- <dynamic-ui [body]="body" *ngIf="uiType==UiType.AntDeisgn"></dynamic-ui> -->
             <amis-sample [json]="body" *ngIf="uiType===UiType.Amis"></amis-sample>
         </ng-container>
 
@@ -27,7 +29,6 @@
                 <code class="language-toml">
 {{toml}}
                 </code>
-
         </pre>
         </div>
 

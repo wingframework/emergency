@@ -23,6 +23,7 @@
   "scripts": {
     "ng-high-memory": "node --max_old_space_size=8000 ./node_modules/@angular/cli/bin/ng",
     "ng": "ng",
+    "build-ng-alaim-amis":"ng build ng-alain-amis --configuration development --watch",
     "start": "ng s --proxy-config proxy.conf.json",
     "hmr": "ng s -o --hmr",
     "build": "npm run ng-high-memory build",
@@ -102,6 +103,7 @@
     "stylelint-config-prettier": "^8.0.2",
     "stylelint-config-rational-order": "^0.1.2",
     "stylelint-config-standard": "^22.0.0",
+    "ng-packagr": "^12.1.1",
     "stylelint-declaration-block-no-ignored-properties": "^2.4.0",
     "stylelint-order": "^4.1.0",
     "@delon/testing": "^12.2.3",
