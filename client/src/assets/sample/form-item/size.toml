@@ -1,0 +1,29 @@
+type = "page"
+[body]
+type = "form"
+[[body.body]]
+type = "input-text"
+label = "极小"
+name = "text-xs"
+size = "xs"
+
+[[body.body]]
+type = "input-text"
+label = "小"
+name = "text-sm"
+size = "sm"
+[[body.body]]
+type = "input-text"
+label = "中"
+name = "text-md"
+size = "md"
+[[body.body]]
+type = "input-text"
+label = "大"
+name = "text-lg"
+size = "lg"
+[[body.body]]
+type = "input-text"
+label = "占满"
+name = "text-lg"
+size = "full"

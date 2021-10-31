@@ -1,4 +1,11 @@
-<nz-tabset>
+<nz-tabset (nzSelectChange)="refreshHighlight()">
+    <nz-tab nzTitle="文档">
+        <div class="code-block">
+            <markdown [src]="mdFile"></markdown>
+
+        </div>
+
+    </nz-tab>
     <nz-tab nzTitle="配置文件">
         <div style="padding: 6px;">
             <nz-tag [nzColor]="settingFormat=='toml'?'#87d068':'green'" (click)="settingFormat='toml';refreshHighlight()">TOML</nz-tag>

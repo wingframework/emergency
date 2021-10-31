@@ -1,0 +1,18 @@
+type = "page"
+title = "基础表单页面"
+expand = true
+[body]
+title = "基础表单页面"
+type = "form"
+mode = "inline"
+expand = true
+[[body.body]]
+type = "input-text" #文本输入框
+size = "small"
+name = "username"
+label = "用户名"
+[[body.body]]
+type = "input-password" #文本输入框
+size = "small"
+name = "password"
+label = "密码"

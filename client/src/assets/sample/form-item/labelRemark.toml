@@ -1,0 +1,23 @@
+
+type = "page"
+[body]
+type = "form"
+mode = "horizontal"
+[[body.body]]
+type = "input-text"
+label = "无标签提示"
+name = "text1"
+[[body.body]]
+type = "input-text"
+label = "有标签提示"
+labelRemark = "这是一段提示"
+name = "text2"
+[[body.body]]
+type = "input-text"
+label = "更复杂的标签提示"
+name = "text3"
+
+[labelRemark]
+type = "remark"
+title = "提示"
+content = "<pre>first \nsecond\n${text1}</pre>"

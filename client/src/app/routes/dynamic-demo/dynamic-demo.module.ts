@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { SharedModule } from '@shared';
 import { NgAlainAmisModule } from 'ng-alain-amis';
+import { MarkdownModule } from 'ngx-markdown';
 import { DynamicUiModule } from 'src/app/shared/dynamic-ui/dynamic-ui.module';
 
 import { DynamicDemoRoutingModule } from './dynamic-demo-routing.module';
@@ -14,7 +15,7 @@ import { TomlCaseMenuComponent } from './toml-samples/toml-case-menu/toml-case-m
 import { TomlSamplesComponent } from './toml-samples/toml-samples.component';
 
 @NgModule({
-  imports: [SharedModule, DynamicDemoRoutingModule, CommonModule, NgAlainAmisModule],
+  imports: [SharedModule, MarkdownModule.forChild(), DynamicDemoRoutingModule, CommonModule, NgAlainAmisModule],
   declarations: [
     Sample1Component,
     SampleCaseComponent,

@@ -29,8 +29,16 @@
           "i18n": "表单案例",
          
           "children":[
-            { "link":"/dynamic-demo/dynamic/form.toml",   "text": "基本表单","i18n": "基本表单"},
-            { "link":"/dynamic-demo/dynamic/label-form.toml",   "text": "基本表单","i18n": "表单标签"}
+            { "link":"/dynamic-demo/dynamic?file=form.toml",   "text": "基本表单","i18n": "基本表单"},
+            { "link":"/dynamic-demo/dynamic?file=form-item/basic.toml","text": "基本表单","i18n": "基本表单"},
+            { "link":"/dynamic-demo/dynamic?file=form-item/inline.toml","text": "内联表单","i18n": "内联表单"},
+            { "link":"/dynamic-demo/dynamic?file=form-item/size.toml","text": "size表单","i18n": "size表单"},
+            { "link":"/dynamic-demo/dynamic?file=form-item/label.toml","text": "表单标签","i18n": "表单标签"},
+            { "link":"/dynamic-demo/dynamic?file=form-item/labelRemark.toml","text": "表单项标签提示","i18n": "表单项标签提示"}
+            
+            
+            
+            
             
           ]
         }

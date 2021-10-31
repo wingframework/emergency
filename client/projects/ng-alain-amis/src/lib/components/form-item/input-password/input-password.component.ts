@@ -2,8 +2,9 @@ import { Component, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { NzSizeLDSType } from 'ng-zorro-antd/core/types';
 
-@Component({ selector: 'amis-input-text', templateUrl: './input-text.component.html' })
-export class InputTextComponent {
+@Component({ selector: 'amis-input-password', templateUrl: './input-password.component.html' })
+export class InputPasswordComponent {
+  @Input() body!: any;
   @Input() formGroup!: FormGroup;
   @Input() required?: boolean;
   @Input() label?: string | false;
@@ -11,7 +12,6 @@ export class InputTextComponent {
   @Input() name!: string;
   @Input() size!: NzSizeLDSType | 'lg' | 'md' | 'sm';
   @Input() disabled?: boolean;
-
   ngOnInit(): void {
     switch (this.size) {
       case 'lg':

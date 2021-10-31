@@ -1,0 +1,23 @@
+type = "page"
+title = "表单项标签"
+expand = true
+[body]
+title = "基础表单页面"
+type = "form"
+mode = "horizontal"
+expand = true
+[[body.body]]
+type = "input-text"  #文本输入框
+name = "text1"
+label = "常规"
+placeholder = "常规标签"
+[[body.body]]
+type = "input-text"   #文本输入框
+name = "text2"
+label = ""
+placeholder = "不显示标签"
+[[body.body]]
+type = "input-text"        #文本输入框
+name = "text3"
+label = false
+placeholder = "不显示标签且清除空间"

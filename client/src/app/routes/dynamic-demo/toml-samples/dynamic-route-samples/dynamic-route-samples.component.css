@@ -5,3 +5,9 @@
     cursor: pointer;
     color: lightseagreen;
 }
+
+.code-block {
+    background: rgb(68, 68, 68);
+    color: #fdff;
+    padding: 20px;
+}

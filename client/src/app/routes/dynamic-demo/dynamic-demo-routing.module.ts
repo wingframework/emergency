@@ -9,7 +9,8 @@ const routes: Routes = [
   { path: '', redirectTo: 'sample1', pathMatch: 'full' },
   { path: 'sample1', component: Sample1Component },
   { path: 'toml-sample', component: TomlSamplesComponent },
-  { path: 'dynamic/:file', component: DynamicRouteSamplesComponent }
+  { path: 'dynamic', component: DynamicRouteSamplesComponent }
+
   //   { path: 'analysis', component: DashboardAnalysisComponent },
   //   { path: 'monitor', component: DashboardMonitorComponent },
   //   { path: 'workplace', component: DashboardWorkplaceComponent }

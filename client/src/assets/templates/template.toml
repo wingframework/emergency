@@ -10,5 +10,5 @@ name = "page"
 path = "./pages/page/page.toml"
 ##页面模板
 [[templates]]
-name = "meta-form"
+name = "form"
 path = "./views/form/form.toml"
