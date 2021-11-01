@@ -15,8 +15,19 @@ export class DynamicFormControlService {
     return new FormGroup(group);
   }
   renderTooltip(content: string, formValue: any = {}) {
-    let result = '';
-    Object.keys(formValue).forEach(key => (result = content.replace('${+key+}', formValue[key])));
+    let result = content;
+    Object.keys(formValue).forEach(key => {
+      let tabKey = '${' + key + '}';
+      result = result.replace(tabKey, formValue[key] ? formValue[key] : '');
+      debugger;
+    });
     return result;
+  }
+
+  condistionOn(value: any, exp: string) {
+    function conditionDisabeld(express: string) {
+      return eval(express);
+    }
+    return conditionDisabeld.call(value, exp);
   }
 }

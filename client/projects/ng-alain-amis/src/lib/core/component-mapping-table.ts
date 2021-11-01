@@ -1,3 +1,4 @@
+import { InputNumberComponent } from '../components/form-item/input-numer/input-number.component';
 import { InputPasswordComponent } from '../components/form-item/input-password/input-password.component';
 import { InputTextComponent } from '../components/form-item/input-text/input-text.component';
 import { FormComponent } from '../components/form/form.component';
@@ -16,5 +17,6 @@ export class ComponentMappingTable {
     this.table.set('page', PageComponent);
     this.table.set('input-text', InputTextComponent);
     this.table.set('input-password', InputPasswordComponent);
+    this.table.set('input-number', InputNumberComponent);
   }
 }

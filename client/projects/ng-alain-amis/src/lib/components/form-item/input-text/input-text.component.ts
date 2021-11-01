@@ -12,7 +12,12 @@ export class InputTextComponent {
   @Input() labelRemark?: any;
   @Input() name!: string;
   @Input() size!: NzSizeLDSType | 'lg' | 'md' | 'sm';
-  @Input() disabled?: boolean;
+  @Input() disabled!: boolean;
+  @Input() disabledOn!: string;
+  @Input() visible!: boolean;
+  @Input() hidden!: boolean;
+  @Input() hiddenOn!: string;
+  @Input() description!: string;
   constructor(private dynamicFormControlService: DynamicFormControlService) {}
 
   ngOnInit(): void {
@@ -27,6 +32,16 @@ export class InputTextComponent {
         this.size = 'small';
         break;
     }
+    if (this.disabledOn) {
+      this.formGroup.valueChanges.subscribe(r => {
+        this.disabled = this.dynamicFormControlService.condistionOn(this.formGroup.getRawValue(), this.disabledOn);
+      });
+    }
+    if (this.hiddenOn) {
+      this.formGroup.valueChanges.subscribe(r => {
+        this.disabled = this.dynamicFormControlService.condistionOn(this.formGroup.getRawValue(), this.hiddenOn);
+      });
+    }
   }
 
   get isValid() {
@@ -34,6 +49,8 @@ export class InputTextComponent {
     return this.formGroup.controls[this.name].valid;
   }
   getLabelContent() {
-    return this.dynamicFormControlService.renderTooltip(this.labelRemark.content, this.formGroup.getRawValue());
+    let formValue = this.formGroup.getRawValue();
+    let result = this.dynamicFormControlService.renderTooltip(this.labelRemark.content, formValue);
+    return result;
   }
 }

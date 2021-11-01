@@ -34,7 +34,18 @@
             { "link":"/dynamic-demo/dynamic?file=form-item/inline.toml","text": "内联表单","i18n": "内联表单"},
             { "link":"/dynamic-demo/dynamic?file=form-item/size.toml","text": "size表单","i18n": "size表单"},
             { "link":"/dynamic-demo/dynamic?file=form-item/label.toml","text": "表单标签","i18n": "表单标签"},
-            { "link":"/dynamic-demo/dynamic?file=form-item/labelRemark.toml","text": "表单项标签提示","i18n": "表单项标签提示"}
+            { "link":"/dynamic-demo/dynamic?file=form-item/labelRemark.toml","text": "表单项标签提示","i18n": "表单项标签提示"},
+            { "link":"/dynamic-demo/dynamic?file=form-item/disabled.toml","text": "表单项禁用","i18n": "表单项禁用"},
+            { "link":"/dynamic-demo/dynamic?file=form-item/disabledOn.toml","text": "表单项条件禁用","i18n": "表单项条件禁用"},
+            { "link":"/dynamic-demo/dynamic?file=form-item/hidden.toml","text": "表单项显隐","i18n": "表单项显隐"},
+            { "link":"/dynamic-demo/dynamic?file=form-item/default.toml","text": "配置表单项默认值","i18n": "配置表单项默认值"},
+            { "link":"/dynamic-demo/dynamic?file=form-item/default-data.toml","text": "配置表单默认值","i18n": "配置表单默认值"}
+            
+
+           
+            
+          
+            
             
             
             

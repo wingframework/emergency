@@ -9,9 +9,15 @@ export class FormComponent {
   @Input() mode: NzFormLayoutType = 'vertical';
   @Input() body!: any[];
   @Input() formGroup!: FormGroup;
+  @Input() data: any;
 
   constructor(private dynamicFormControlService: DynamicFormControlService) {}
   ngOnInit(): void {
     this.formGroup = this.dynamicFormControlService.toFormGroup(this.body as any);
+    debugger;
+
+    if (this.data) {
+      this.formGroup.setValue(this.data);
+    }
   }
 }

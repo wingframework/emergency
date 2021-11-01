@@ -1,0 +1,10 @@
+type = "page"
+[body]
+type = "form"
+[body.data]
+text = "hello world!"
+[[body.body]]
+type = "input-text"
+label = "text"
+name = "text"
+description = "拥有默认值的 text"
