@@ -14,4 +14,9 @@ export class DynamicFormControlService {
     });
     return new FormGroup(group);
   }
+  renderTooltip(content: string, formValue: any = {}) {
+    let result = '';
+    Object.keys(formValue).forEach(key => (result = content.replace('${+key+}', formValue[key])));
+    return result;
+  }
 }
