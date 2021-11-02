@@ -11,7 +11,8 @@ export class InputPasswordComponent {
   @Input() labelRemark?: string;
   @Input() name!: string;
   @Input() size!: NzSizeLDSType | 'lg' | 'md' | 'sm';
-  @Input() disabled?: boolean;
+  @Input() disabled!: boolean;
+  @Input() placeholder: string = '';
   ngOnInit(): void {
     switch (this.size) {
       case 'lg':

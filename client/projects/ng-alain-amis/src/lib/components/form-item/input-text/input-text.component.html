@@ -6,8 +6,8 @@
     </nz-form-label>
     <nz-form-control nzHasFeedback nzValidatingTip="校验中" [nzExtra]="description">
         <div [formGroup]="formGroup">
-            <input type="text" nz-input [nzSize]="$any(size)" [nzSize]="$any(size)" [formControlName]="name" *ngIf="!disabled" [disabled]="disabled" />
-            <input type="text" nz-input [nzSize]="$any(size)" [nzSize]="$any(size)" *ngIf="disabled" [disabled]="disabled " />
+            <input type="text" nz-input [nzSize]="$any(size)" [placeholder]="placeholder" [nzSize]="$any(size)" [formControlName]="name" *ngIf="!disabled" [disabled]="disabled" />
+            <input type="text" nz-input [nzSize]="$any(size)" [placeholder]="placeholder" [nzSize]="$any(size)" *ngIf="disabled" [disabled]="disabled " />
         </div>
     </nz-form-control>
 </nz-form-item>

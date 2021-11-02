@@ -58,6 +58,7 @@
  */
 import 'zone.js'; // Included with Angular CLI.
 import 'path-browserify';
+(window as any).global = window;
 
 /***************************************************************************************************
  * APPLICATION IMPORTS

@@ -18,6 +18,7 @@ export class InputTextComponent {
   @Input() hidden!: boolean;
   @Input() hiddenOn!: string;
   @Input() description!: string;
+  @Input() placeholder: string = '';
   constructor(private dynamicFormControlService: DynamicFormControlService) {}
 
   ngOnInit(): void {

@@ -87,10 +87,12 @@ import { SharedModule } from './shared/shared.module';
 import { STWidgetModule } from './shared/st-widget/st-widget.module';
 import { Observable } from 'rxjs';
 import { MarkdownModule } from 'ngx-markdown';
+import { DragulaModule } from 'ng2-dragula';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
+    DragulaModule.forRoot(),
     MarkdownModule.forRoot(),
     BrowserModule,
     BrowserAnimationsModule,

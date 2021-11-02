@@ -1,0 +1,15 @@
+::ng-deep .ant-card-body {
+    padding: 0;
+}
+
+.form-builder-content {
+    width: 300px;
+    border-right: 1px solid #e2e2e2;
+    padding: 12px;
+}
+
+.content {
+    width: calc(100vw - 750px);
+    flex-shrink: 0;
+    box-shadow: 5px 5px #e2e2e2;
+}

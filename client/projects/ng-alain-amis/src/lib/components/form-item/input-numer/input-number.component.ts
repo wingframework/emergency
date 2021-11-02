@@ -16,6 +16,7 @@ export class InputNumberComponent {
   @Input() hiddenOn!: string;
   @Input() value: any;
   @Input() description!: string;
+  @Input() placeholder: string = '';
   constructor(private dynamicFormControlService: DynamicFormControlService) {}
 
   ngOnInit(): void {

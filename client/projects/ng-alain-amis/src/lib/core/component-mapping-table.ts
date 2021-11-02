@@ -12,11 +12,5 @@ export interface IMappingTable {
 export class ComponentMappingTable {
   public table: Map<string, Function> = new Map<string, Function>();
 
-  constructor() {
-    this.table.set('form', FormComponent);
-    this.table.set('page', PageComponent);
-    this.table.set('input-text', InputTextComponent);
-    this.table.set('input-password', InputPasswordComponent);
-    this.table.set('input-number', InputNumberComponent);
-  }
+  constructor() {}
 }

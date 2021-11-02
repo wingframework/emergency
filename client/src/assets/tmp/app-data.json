@@ -40,19 +40,11 @@
             { "link":"/dynamic-demo/dynamic?file=form-item/hidden.toml","text": "表单项显隐","i18n": "表单项显隐"},
             { "link":"/dynamic-demo/dynamic?file=form-item/default.toml","text": "配置表单项默认值","i18n": "配置表单项默认值"},
             { "link":"/dynamic-demo/dynamic?file=form-item/default-data.toml","text": "配置表单默认值","i18n": "配置表单默认值"}
-            
-
-           
-            
-          
-            
-            
-            
-            
-            
-            
           ]
-        }
+        },
+        { "link":"/dynamic-demo/form-builder","text": "表单设计器","i18n": "表单设计器"}
+
+
       ]
     },
     {
