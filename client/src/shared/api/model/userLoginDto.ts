@@ -10,12 +10,11 @@
  * Do not edit the class manually.
  */
 
-export interface AddStaffDto { 
-    enable?: number;
-    groupname?: string;
-    job?: string;
-    nickname?: string;
-    phonenumber?: string;
-    userid?: string;
+export interface UserLoginDto { 
+    code?: string;
+    password?: string;
+    /**
+     * 用户名
+     */
     username?: string;
 }

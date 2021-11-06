@@ -233,6 +233,12 @@ export class DefaultInterceptor implements HttpInterceptor {
     if (!headers?.has('Accept-Language') && lang) {
       res['Accept-Language'] = lang;
     }
+    let token = this.tokenSrv.get()?.token as any;
+    if (token) {
+      res['Authorization'] = token;
+    }
+
+    debugger;
 
     return res;
   }
@@ -243,6 +249,9 @@ export class DefaultInterceptor implements HttpInterceptor {
     if (!url.startsWith('https://') && !url.startsWith('http://')) {
       url = environment.api.baseUrl + url;
     }
+    //
+    // req.headers.set('token', token);
+    debugger;
 
     const newReq = req.clone({ url, setHeaders: this.getAdditionalHeaders(req.headers) });
     return next.handle(newReq).pipe(

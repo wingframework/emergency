@@ -16,11 +16,15 @@ import { CustomHttpUrlEncodingCodec } from '../encoder';
 
 import { Observable } from 'rxjs';
 
+import { RoleUpdateDto } from '../model/roleUpdateDto';
+import { RtnRole } from '../model/rtnRole';
+import { Rtnboolean } from '../model/rtnboolean';
+
 import { BASE_PATH, COLLECTION_FORMATS } from '../variables';
 import { Configuration } from '../configuration';
 
 @Injectable()
-export class IndexControllerService {
+export class RoleControllerService {
   protected basePath = '';
   public defaultHeaders = new HttpHeaders();
   public configuration = new Configuration();
@@ -50,15 +54,21 @@ export class IndexControllerService {
   }
 
   /**
-   * say
+   * deleteById
    *
+   * @param id id
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
    */
-  public sayUsingDELETE(observe?: 'body', reportProgress?: boolean): Observable<string>;
-  public sayUsingDELETE(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
-  public sayUsingDELETE(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
-  public sayUsingDELETE(observe: any = 'body', reportProgress: boolean = false): Observable<any> {
+  public deleteByIdUsingDELETE2(id?: number, observe?: 'body', reportProgress?: boolean): Observable<Rtnboolean>;
+  public deleteByIdUsingDELETE2(id?: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Rtnboolean>>;
+  public deleteByIdUsingDELETE2(id?: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Rtnboolean>>;
+  public deleteByIdUsingDELETE2(id?: number, observe: any = 'body', reportProgress: boolean = false): Observable<any> {
+    let queryParameters = new HttpParams({ encoder: new CustomHttpUrlEncodingCodec() });
+    if (id !== undefined && id !== null) {
+      queryParameters = queryParameters.set('id', <any>id);
+    }
+
     let headers = this.defaultHeaders;
 
     // to determine the Accept header
@@ -71,7 +81,8 @@ export class IndexControllerService {
     // to determine the Content-Type header
     const consumes: string[] = [];
 
-    return this.httpClient.request<string>('delete', `${this.basePath}/springboot/say`, {
+    return this.httpClient.request<Rtnboolean>('delete', `${this.basePath}/api/role/deleteById`, {
+      params: queryParameters,
       withCredentials: this.configuration.withCredentials,
       headers: headers,
       observe: observe,
@@ -80,15 +91,21 @@ export class IndexControllerService {
   }
 
   /**
-   * say
+   * detailById
    *
+   * @param id Id
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
    */
-  public sayUsingGET(observe?: 'body', reportProgress?: boolean): Observable<string>;
-  public sayUsingGET(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
-  public sayUsingGET(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
-  public sayUsingGET(observe: any = 'body', reportProgress: boolean = false): Observable<any> {
+  public detailByIdUsingGET(id?: number, observe?: 'body', reportProgress?: boolean): Observable<RtnRole>;
+  public detailByIdUsingGET(id?: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<RtnRole>>;
+  public detailByIdUsingGET(id?: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<RtnRole>>;
+  public detailByIdUsingGET(id?: number, observe: any = 'body', reportProgress: boolean = false): Observable<any> {
+    let queryParameters = new HttpParams({ encoder: new CustomHttpUrlEncodingCodec() });
+    if (id !== undefined && id !== null) {
+      queryParameters = queryParameters.set('Id', <any>id);
+    }
+
     let headers = this.defaultHeaders;
 
     // to determine the Accept header
@@ -101,7 +118,8 @@ export class IndexControllerService {
     // to determine the Content-Type header
     const consumes: string[] = [];
 
-    return this.httpClient.request<string>('get', `${this.basePath}/springboot/say`, {
+    return this.httpClient.request<RtnRole>('get', `${this.basePath}/api/role/detail/${encodeURIComponent(String(id))}`, {
+      params: queryParameters,
       withCredentials: this.configuration.withCredentials,
       headers: headers,
       observe: observe,
@@ -110,15 +128,71 @@ export class IndexControllerService {
   }
 
   /**
-   * say
+   * roleAdd
    *
+   * @param code
+   * @param menuIdList
+   * @param roleName
+   * @param sort
+   * @param status
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
    */
-  public sayUsingHEAD(observe?: 'body', reportProgress?: boolean): Observable<string>;
-  public sayUsingHEAD(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
-  public sayUsingHEAD(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
-  public sayUsingHEAD(observe: any = 'body', reportProgress: boolean = false): Observable<any> {
+  public roleAddUsingPOST(
+    code?: string,
+    menuIdList?: Array<number>,
+    roleName?: string,
+    sort?: number,
+    status?: number,
+    observe?: 'body',
+    reportProgress?: boolean
+  ): Observable<Rtnboolean>;
+  public roleAddUsingPOST(
+    code?: string,
+    menuIdList?: Array<number>,
+    roleName?: string,
+    sort?: number,
+    status?: number,
+    observe?: 'response',
+    reportProgress?: boolean
+  ): Observable<HttpResponse<Rtnboolean>>;
+  public roleAddUsingPOST(
+    code?: string,
+    menuIdList?: Array<number>,
+    roleName?: string,
+    sort?: number,
+    status?: number,
+    observe?: 'events',
+    reportProgress?: boolean
+  ): Observable<HttpEvent<Rtnboolean>>;
+  public roleAddUsingPOST(
+    code?: string,
+    menuIdList?: Array<number>,
+    roleName?: string,
+    sort?: number,
+    status?: number,
+    observe: any = 'body',
+    reportProgress: boolean = false
+  ): Observable<any> {
+    let queryParameters = new HttpParams({ encoder: new CustomHttpUrlEncodingCodec() });
+    if (code !== undefined && code !== null) {
+      queryParameters = queryParameters.set('code', <any>code);
+    }
+    if (menuIdList) {
+      menuIdList.forEach(element => {
+        queryParameters = queryParameters.append('menuIdList', <any>element);
+      });
+    }
+    if (roleName !== undefined && roleName !== null) {
+      queryParameters = queryParameters.set('roleName', <any>roleName);
+    }
+    if (sort !== undefined && sort !== null) {
+      queryParameters = queryParameters.set('sort', <any>sort);
+    }
+    if (status !== undefined && status !== null) {
+      queryParameters = queryParameters.set('status', <any>status);
+    }
+
     let headers = this.defaultHeaders;
 
     // to determine the Accept header
@@ -131,7 +205,8 @@ export class IndexControllerService {
     // to determine the Content-Type header
     const consumes: string[] = [];
 
-    return this.httpClient.request<string>('head', `${this.basePath}/springboot/say`, {
+    return this.httpClient.request<Rtnboolean>('post', `${this.basePath}/api/role/roleAdd`, {
+      params: queryParameters,
       withCredentials: this.configuration.withCredentials,
       headers: headers,
       observe: observe,
@@ -140,15 +215,15 @@ export class IndexControllerService {
   }
 
   /**
-   * say
+   * roleQuery
    *
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
    */
-  public sayUsingOPTIONS(observe?: 'body', reportProgress?: boolean): Observable<string>;
-  public sayUsingOPTIONS(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
-  public sayUsingOPTIONS(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
-  public sayUsingOPTIONS(observe: any = 'body', reportProgress: boolean = false): Observable<any> {
+  public roleQueryUsingGET(observe?: 'body', reportProgress?: boolean): Observable<Rtnboolean>;
+  public roleQueryUsingGET(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Rtnboolean>>;
+  public roleQueryUsingGET(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Rtnboolean>>;
+  public roleQueryUsingGET(observe: any = 'body', reportProgress: boolean = false): Observable<any> {
     let headers = this.defaultHeaders;
 
     // to determine the Accept header
@@ -161,7 +236,7 @@ export class IndexControllerService {
     // to determine the Content-Type header
     const consumes: string[] = [];
 
-    return this.httpClient.request<string>('options', `${this.basePath}/springboot/say`, {
+    return this.httpClient.request<Rtnboolean>('get', `${this.basePath}/api/role/roleQuery`, {
       withCredentials: this.configuration.withCredentials,
       headers: headers,
       observe: observe,
@@ -170,15 +245,20 @@ export class IndexControllerService {
   }
 
   /**
-   * say
+   * roleUpdate
    *
+   * @param body roleUpdateDto
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
    */
-  public sayUsingPATCH(observe?: 'body', reportProgress?: boolean): Observable<string>;
-  public sayUsingPATCH(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
-  public sayUsingPATCH(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
-  public sayUsingPATCH(observe: any = 'body', reportProgress: boolean = false): Observable<any> {
+  public roleUpdateUsingPOST(body: RoleUpdateDto, observe?: 'body', reportProgress?: boolean): Observable<Rtnboolean>;
+  public roleUpdateUsingPOST(body: RoleUpdateDto, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Rtnboolean>>;
+  public roleUpdateUsingPOST(body: RoleUpdateDto, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Rtnboolean>>;
+  public roleUpdateUsingPOST(body: RoleUpdateDto, observe: any = 'body', reportProgress: boolean = false): Observable<any> {
+    if (body === null || body === undefined) {
+      throw new Error('Required parameter body was null or undefined when calling roleUpdateUsingPOST.');
+    }
+
     let headers = this.defaultHeaders;
 
     // to determine the Accept header
@@ -189,69 +269,14 @@ export class IndexControllerService {
     }
 
     // to determine the Content-Type header
-    const consumes: string[] = [];
-
-    return this.httpClient.request<string>('patch', `${this.basePath}/springboot/say`, {
-      withCredentials: this.configuration.withCredentials,
-      headers: headers,
-      observe: observe,
-      reportProgress: reportProgress
-    });
-  }
-
-  /**
-   * say
-   *
-   * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-   * @param reportProgress flag to report request and response progress.
-   */
-  public sayUsingPOST(observe?: 'body', reportProgress?: boolean): Observable<string>;
-  public sayUsingPOST(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
-  public sayUsingPOST(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
-  public sayUsingPOST(observe: any = 'body', reportProgress: boolean = false): Observable<any> {
-    let headers = this.defaultHeaders;
-
-    // to determine the Accept header
-    let httpHeaderAccepts: string[] = ['*/*'];
-    const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-    if (httpHeaderAcceptSelected != undefined) {
-      headers = headers.set('Accept', httpHeaderAcceptSelected);
+    const consumes: string[] = ['application/json'];
+    const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+    if (httpContentTypeSelected != undefined) {
+      headers = headers.set('Content-Type', httpContentTypeSelected);
     }
 
-    // to determine the Content-Type header
-    const consumes: string[] = [];
-
-    return this.httpClient.request<string>('post', `${this.basePath}/springboot/say`, {
-      withCredentials: this.configuration.withCredentials,
-      headers: headers,
-      observe: observe,
-      reportProgress: reportProgress
-    });
-  }
-
-  /**
-   * say
-   *
-   * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-   * @param reportProgress flag to report request and response progress.
-   */
-  public sayUsingPUT(observe?: 'body', reportProgress?: boolean): Observable<string>;
-  public sayUsingPUT(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
-  public sayUsingPUT(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
-  public sayUsingPUT(observe: any = 'body', reportProgress: boolean = false): Observable<any> {
-    let headers = this.defaultHeaders;
-
-    // to determine the Accept header
-    let httpHeaderAccepts: string[] = ['*/*'];
-    const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-    if (httpHeaderAcceptSelected != undefined) {
-      headers = headers.set('Accept', httpHeaderAcceptSelected);
-    }
-
-    // to determine the Content-Type header
-    const consumes: string[] = [];
-
-    return this.httpClient.request<string>('put', `${this.basePath}/springboot/say`, {
+    return this.httpClient.request<Rtnboolean>('post', `${this.basePath}/api/role/roleUpdate`, {
+      body: body,
       withCredentials: this.configuration.withCredentials,
       headers: headers,
       observe: observe,

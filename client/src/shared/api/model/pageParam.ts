@@ -10,12 +10,10 @@
  * Do not edit the class manually.
  */
 
-export interface AddStaffDto { 
-    enable?: number;
-    groupname?: string;
-    job?: string;
-    nickname?: string;
-    phonenumber?: string;
-    userid?: string;
-    username?: string;
+export interface PageParam { 
+    pageIndex?: number;
+    pageSize?: number;
+    pageable?: boolean;
+    sortByAsc?: boolean;
+    sortField?: string;
 }

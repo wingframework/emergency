@@ -10,12 +10,12 @@
  * Do not edit the class manually.
  */
 
-export interface AddStaffDto { 
-    enable?: number;
-    groupname?: string;
-    job?: string;
-    nickname?: string;
-    phonenumber?: string;
-    userid?: string;
-    username?: string;
+export interface Schedule { 
+    classes?: string;
+    createAt?: Date;
+    date?: Date;
+    id?: number;
+    lastUpdateAt?: Date;
+    leaderStaffId?: number;
+    peopleStaffId?: number;
 }

@@ -10,12 +10,17 @@
  * Do not edit the class manually.
  */
 
-export interface AddStaffDto { 
-    enable?: number;
-    groupname?: string;
-    job?: string;
+export interface UserUpdateDto { 
+    abatarUrl?: string;
+    email?: string;
+    func?: string;
+    id?: number;
     nickname?: string;
-    phonenumber?: string;
-    userid?: string;
+    phoneNumber?: string;
+    rbac?: string;
+    roleIdList?: Array<number>;
+    sex?: number;
+    status?: number;
+    userUnit?: string;
     username?: string;
 }

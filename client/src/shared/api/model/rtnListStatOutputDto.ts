@@ -9,13 +9,10 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
+import { StatOutputDto } from './statOutputDto';
 
-export interface AddStaffDto { 
-    enable?: number;
-    groupname?: string;
-    job?: string;
-    nickname?: string;
-    phonenumber?: string;
-    userid?: string;
-    username?: string;
+export interface RtnListStatOutputDto { 
+    data?: Array<StatOutputDto>;
+    msg?: string;
+    ok?: boolean;
 }

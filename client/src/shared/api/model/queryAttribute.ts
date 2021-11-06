@@ -10,12 +10,9 @@
  * Do not edit the class manually.
  */
 
-export interface AddStaffDto { 
-    enable?: number;
-    groupname?: string;
-    job?: string;
-    nickname?: string;
-    phonenumber?: string;
-    userid?: string;
-    username?: string;
+export interface QueryAttribute { 
+    alias?: string;
+    key?: string;
+    type?: string;
+    value?: string;
 }

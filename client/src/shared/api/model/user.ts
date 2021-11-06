@@ -9,10 +9,23 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
+import { Role } from './role';
 
 export interface User { 
+    abatarUrl?: string;
+    email?: string;
+    func?: string;
     id?: number;
+    lastLoginAt?: Date;
+    nickname?: string;
     password?: string;
-    phonenumber?: string;
+    phoneNumber?: string;
+    rbac?: string;
+    role?: Role;
+    roleId?: number;
+    roleList?: Array<Role>;
+    sex?: number;
+    status?: number;
+    userUnit?: string;
     username?: string;
 }

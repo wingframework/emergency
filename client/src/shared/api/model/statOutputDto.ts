@@ -10,12 +10,8 @@
  * Do not edit the class manually.
  */
 
-export interface AddStaffDto { 
-    enable?: number;
-    groupname?: string;
-    job?: string;
+export interface StatOutputDto { 
+    classes?: string;
+    date?: Date;
     nickname?: string;
-    phonenumber?: string;
-    userid?: string;
-    username?: string;
 }

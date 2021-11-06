@@ -13,7 +13,8 @@
 export interface RegisterInputDto { 
     code?: string;
     password?: string;
-    phonenumber?: string;
-    repassword?: string;
+    phoneNumber?: string;
+    rePassword?: string;
+    type?: number;
     username?: string;
 }

@@ -9,13 +9,10 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
+import { SummaryParam } from './summaryParam';
 
-export interface AddStaffDto { 
-    enable?: number;
-    groupname?: string;
-    job?: string;
-    nickname?: string;
-    phonenumber?: string;
-    userid?: string;
-    username?: string;
+export interface Paging { 
+    count?: number;
+    rows?: Array<any>;
+    summaryParam?: Array<SummaryParam>;
 }

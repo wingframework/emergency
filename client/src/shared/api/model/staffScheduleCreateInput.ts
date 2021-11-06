@@ -9,13 +9,15 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
+import { Schedule } from './schedule';
 
-export interface AddStaffDto { 
-    enable?: number;
-    groupname?: string;
-    job?: string;
-    nickname?: string;
-    phonenumber?: string;
-    userid?: string;
-    username?: string;
+export interface StaffScheduleCreateInput { 
+    classes?: string;
+    creatAt?: Date;
+    date?: Date;
+    id?: number;
+    lastUpdateAt?: Date;
+    morningSchedule?: Schedule;
+    nightSchedule?: Schedule;
+    noonSchedule?: Schedule;
 }
