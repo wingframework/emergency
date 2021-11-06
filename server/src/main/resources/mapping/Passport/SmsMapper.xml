@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.demo.commons.mappers.SmsMapper">
+<mapper namespace="com.example.saas.common.mappers.SmsMapper">
 
     <insert id="Create" >
         insert  into sms ( phonenumber,code,sentAt,type ) values(#{sms.phonenumber},#{ sms.code },#{sms.sentAt},#{ sms.type })
     </insert>
 
-<!--    <select id="queryNotStaffUser" resultType="com.example.demo.passport.entitys.User" >-->
+<!--    <select id="queryNotStaffUser" resultType="com.example.saas.passport.entitys.User" >-->
 <!--        SELECT user.* FROM springboot.user left join springboot.staff  on staff.userId =  user.id   where  staff.userId   is null  ;-->
 
 <!--    </select>-->
 
 <!--          查询的是5分钟之内的短信   假设现在是17点05 查询的是17点之后的短信         还没理解透-->
-    <select id="querySentSmsExpire"  resultType="com.example.demo.passport.entitys.Sms" >
+    <select id="querySentSmsExpire"  resultType="com.example.saas.passport.entitys.Sms" >
         SELECT * FROM springboot.sms
         where unix_timestamp(sms.sentAt) > unix_timestamp(#{sentAt})
           and phoneNumber=#{phoneNumber} and type= #{type }    order by sentAt desc

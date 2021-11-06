@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.demo.passport.Mappers.UserMapper">
+<mapper namespace="com.example.saas.passport.mappers.UserMapper">
 
     <insert id="create">
         insert into user (username, password, phoneNumber)
@@ -15,7 +15,7 @@
            or phoneNumber = #{user.phoneNumber};
     </select>
 
-    <select id="findUserByUsername" resultType="com.example.demo.Rbac.Entitys.User">
+    <select id="findUserByUsername" resultType="com.example.saas.rbac.entitys.User">
         SELECT *
         FROM user
         where username = #{username};
@@ -32,7 +32,7 @@
         from user
         where id = #{id};
     </delete>
-<select id="FindUserById" resultType="com.example.demo.Rbac.Entitys.User">
+<select id="FindUserById" resultType="com.example.saas.rbac.entitys.User">
         SELECT *
         FROM user
         where id = #{id} limit 0,1

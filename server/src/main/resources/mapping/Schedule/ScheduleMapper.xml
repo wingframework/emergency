@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.demo.Staff.Mappers.ScheduleMapper">
+<mapper namespace="com.example.saas.staff.mappers.ScheduleMapper">
 <!--    <insert id="Create" >-->
 <!--        insert  into staff (username,nickname,job,groupname,phonenumber)-->
 <!--        values(#{staff.username},#{staff.nickname}, #{staff.job},#{staff.groupname},#{staff.phonenumber}  )-->
@@ -15,7 +15,7 @@
 
 <!--    连表查出值班人员的昵称                -->
 <!--    SELECT schedule.date,staff.nickname FROM springboot.schedule left join  staff  on schedule.leaderStaffId = staff.id-->
-    <select id="scheduleWithStaffByDateRange" resultType="com.example.demo.Staff.Dto.StatOutputDto">
+    <select id="scheduleWithStaffByDateRange" resultType="com.example.saas.staff.dto.StatOutputDto">
         SELECT schedule.date,staff.nickname,schedule.classes FROM springboot.schedule
             left join  staff  on schedule.leaderStaffId = staff.id
         where
@@ -23,7 +23,7 @@
             and schedule.classes='早班'
     </select>
 
-    <select id="selectScheduleByDateRange" resultType="com.example.demo.Staff.entitys.Schedule">
+    <select id="selectScheduleByDateRange" resultType="com.example.saas.staff.entitys.Schedule">
         SELECT * FROM springboot.schedule
         where    date &gt; #{dateRange.startDate} and date &lt; #{dateRange.endDate}
 

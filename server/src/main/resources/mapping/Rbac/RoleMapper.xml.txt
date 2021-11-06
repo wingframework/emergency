@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.demo.Rbac.Mappers.RoleMapper">
+<mapper namespace="com.example.saas.rbac.mappers.RoleMapper">
     <insert id="roleAdd">
         insert into role (roleName, code, sort, status)
         values (#{role.roleName}, #{role.code}, #{role.sort}, #{role.status});
     </insert>
 
-    <select id="findRoleByCode" resultType="com.example.demo.Rbac.Entitys.Role">
+    <select id="findRoleByCode" resultType="com.example.saas.rbac.entitys.Role">
         SELECT *
         FROM role
         where code = #{code} limit 0,1
@@ -32,13 +32,13 @@
         where roleId = #{roleId};
     </delete>
 
-    <select id="findRoleById" resultType="com.example.demo.Rbac.Entitys.Role">
+    <select id="findRoleById" resultType="com.example.saas.rbac.entitys.Role">
         SELECT *
         FROM role
         where id = #{id} limit 0,1
     </select>
 
-    <select id="pageQueryByKeyword" resultType="com.example.demo.Rbac.Entitys.Role">
+    <select id="pageQueryByKeyword" resultType="com.example.saas.rbac.entitys.Role">
         SELECT * FROM role
         <if test="keyword!=null">
             where (roleName or code) like '%${keyword}%'

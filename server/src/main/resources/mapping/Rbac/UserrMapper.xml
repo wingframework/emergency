@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.demo.Rbac.Mappers.UserMapper">
+<mapper namespace="com.example.saas.rbac.mappers.UserMapper">
     <insert id="UserrAdd">
         insert into userr (abatarUrl, nickname, username, userUnit,phoneNumber,email,rbac,sex,status,func,password)
         values (#{userr.abatarUrl}, #{userr.nickname}, #{userr.username}, #{userr.userUnit},#{userr.phoneNumber},#{userr.email},
                 #{userr.rbac},#{userr.sex},#{userr.status},#{userr.func},#{userr.password})
     </insert>
 
-    <select id="findUserrByUsername" resultType="com.example.demo.Rbac.Entitys.User">
+    <select id="findUserrByUsername" resultType="com.example.saas.rbac.entitys.User">
         SELECT *
         FROM userr
         where username = #{username} limit 0,1
@@ -33,7 +33,7 @@
         where id = #{id};
     </delete>
 
-    <select id="findUserrById" resultType="com.example.demo.Rbac.Entitys.User">
+    <select id="findUserrById" resultType="com.example.saas.rbac.entitys.User">
         SELECT *
         FROM userr
         where id = #{id} limit 0,1
@@ -51,7 +51,7 @@
         where id = #{id};
     </delete>
 
-    <select id="pageQueryByKeyword" resultType="com.example.demo.Rbac.Entitys.User">
+    <select id="pageQueryByKeyword" resultType="com.example.saas.rbac.entitys.User">
         SELECT * FROM userr
         <if test="keyword!=null">
             where (username) like '%${keyword}%'
