@@ -12,7 +12,7 @@ public class User  implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     //头像地址的意思
-    private String abatarUrl;
+    private String avatarUrl;
     //登录名称
     private String nickname;
     //用户昵称
@@ -20,6 +20,15 @@ public class User  implements Serializable {
     //用户单位
     private String userUnit;
     private String phoneNumber;
+
+    public String getAvatarUrl() {
+        return avatarUrl;
+    }
+
+    public void setAvatarUrl(String avatarUrl) {
+        this.avatarUrl = avatarUrl;
+    }
+
     private String email;
     private int sex;
     private String rbac;
@@ -78,13 +87,7 @@ public class User  implements Serializable {
         this.id = id;
     }
 
-    public String getAbatarUrl() {
-        return abatarUrl;
-    }
 
-    public void setAbatarUrl(String abatarUrl) {
-        this.abatarUrl = abatarUrl;
-    }
 
     public String getNickname() {
         return nickname;
