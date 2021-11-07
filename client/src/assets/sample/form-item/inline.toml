@@ -1,0 +1,14 @@
+type = "page"
+[body]
+title = "内联表单"
+type = "form"
+mode = 'inline' #'horizontal' | 'vertical' | 'inline'
+[[body.body]]
+type = "input-text"
+label = "常规"
+name = "text1"
+[[body.body]]
+type = "input-text"
+label = "内联"
+name = "text2"
+mode = "inline"

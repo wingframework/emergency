@@ -1,0 +1,46 @@
+<div>
+    <div class="wrapper">
+        <!-- {{body|json}} -->
+        <div>
+
+
+            <nz-tabset (nzSelectChange)="refresh()">
+                <nz-tab nzTitle="设计器">
+                    <div class="container" dragula="form-item" id="right" style="min-height: 80vh;width:100%;border-right: 1px solid #e2e2e2;;padding: 15px;" [(dragulaModel)]="controls" (dragulaModelChange)="refresh()">
+                        <div *ngFor="let control of controls" class="control">
+                            <dynamic-formbuilder [class.active]="selectedControl==control" [body]="control"></dynamic-formbuilder>
+                        </div>
+                    </div>
+                </nz-tab>
+                <nz-tab nzTitle="alain预览">
+                    <div style="position: relative;">
+                        <i nz-icon nzType="code" (click)="showAlainCode=!showAlainCode" class="code-switch" nzTheme="outline"></i>
+                        <amis-dynamic [body]="body" *ngIf="show"></amis-dynamic>
+                        <component-tree [json]="body" *ngIf="showAlainCode"></component-tree>
+                    </div>
+
+
+                </nz-tab>
+                <nz-tab nzTitle="amis预览">
+                    <amis-sample [json]="body" *ngIf="show"></amis-sample>
+                </nz-tab>
+            </nz-tabset>
+            <!-- <button nz-button nzType="primary" *ngIf="preview" (click)="preview=false">取消</button> <button nz-button nzType="primary" *ngIf="!preview" (click)="preview=true">预览</button>
+            <div class="container" dragula="form-item" id="right" style="min-height: 80vh;width:100%;border-right: 1px solid #e2e2e2;;padding: 15px;" [(dragulaModel)]="controls" (dragulaModelChange)="refresh()">
+                <ng-container *ngIf="preview">
+                    <amis-dynamic [body]="body"></amis-dynamic>
+                </ng-container>
+                <ng-container *ngIf="!preview">
+                    <dynamic-formbuilder [body]="control" *ngFor="let control of controls"></dynamic-formbuilder>
+                </ng-container>
+
+
+            </div> -->
+        </div>
+        <!-- <div class="container" dragula="form-item">
+            <div>This is the default use case. You only need to specify the containers you want to use</div>
+            <div>More interactive use cases lie ahead</div>
+            <div>Make sure to check out the <a href="https://github.com/bevacqua/dragula#readme">documentation on GitHub!</a></div>
+        </div> -->
+    </div>
+</div>

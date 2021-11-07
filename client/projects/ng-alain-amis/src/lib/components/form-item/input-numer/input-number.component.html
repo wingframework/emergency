@@ -1,0 +1,13 @@
+<nz-form-item>
+    <nz-form-label [nzRequired]="required" *ngIf="label !== false" [nzTooltipTitle]="labelRemark?.content ? labelRemarkContent : labelRemark">{{ label }}
+        <ng-template #labelRemarkContent>
+            <div [innerHtml]="getLabelContent()"></div>
+        </ng-template>
+    </nz-form-label>
+    <nz-form-control nzHasFeedback nzValidatingTip="校验中" [nzExtra]="description">
+        <div [formGroup]="formGroup">
+            <input type="number" nz-input [nzSize]="$any(size)" [placeholder]="placeholder" [nzSize]="$any(size)" [formControlName]="name" *ngIf="!disabled" [disabled]="disabled" />
+            <input type="number" nz-input [nzSize]="$any(size)" [placeholder]="placeholder" [nzSize]="$any(size)" *ngIf="disabled" [disabled]="disabled " />
+        </div>
+    </nz-form-control>
+</nz-form-item>

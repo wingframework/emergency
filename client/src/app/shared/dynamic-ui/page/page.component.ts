@@ -5,7 +5,8 @@ import { Com } from '../typings';
 
 @Component({ selector: 'page', templateUrl: './page.component.html' })
 export class PageComponent implements OnInit {
-  @Input() body!: Com & any;
-  constructor(private componentRegisterFactoryService: ComponentRegisterFactoryService) {}
+  @Input() title!: string;
+  @Input() body!: any;
+  constructor() {}
   ngOnInit(): void {}
 }

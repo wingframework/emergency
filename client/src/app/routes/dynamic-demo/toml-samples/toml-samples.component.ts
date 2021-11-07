@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { CopyService } from 'src/app/shared/utils/copy.service';
 import * as toml from 'toml';
 
 enum UiType {
@@ -9,6 +10,8 @@ enum UiType {
 }
 @Component({ selector: 'toml-sample', templateUrl: './toml-samples.component.html', styleUrls: ['./toml-samples.component.css'] })
 export class TomlSamplesComponent {
+  /**支持的控件列表 */
+
   selectedNode?: { title: string; link: string };
   nodes: any;
   toml!: string;
@@ -17,7 +20,7 @@ export class TomlSamplesComponent {
   body?: any;
   UiType = UiType;
   uiType: UiType = UiType.AntDeisgn;
-  constructor(private activeRoute: ActivatedRoute, private http: HttpClient) {
+  constructor(private activeRoute: ActivatedRoute, private http: HttpClient, private copyService: CopyService) {
     this.activeRoute.params.subscribe(rtn => {
       console.log(location.hash);
     });
@@ -27,7 +30,6 @@ export class TomlSamplesComponent {
       let data = toml.parse(rtn);
       console.log(data);
       this.nodes = [data];
-      debugger;
     });
   }
   selectNode(node: { origin: { title: string; link: string } }) {
@@ -37,14 +39,12 @@ export class TomlSamplesComponent {
       this.toml = rtn;
       this.json = toml.parse(rtn);
       this.body = this.json;
-      debugger;
     });
   }
   copyText(value: string) {
-    var oInput = document.createElement('textarea');
-    document.body.appendChild(oInput);
-    oInput.value = value;
-    oInput.select(); // 选择对象
-    document.execCommand('Copy'); // 执行浏览器复制命令
+    this.copyService.copyText(value);
+  }
+  refreshHighlight() {
+    hljs.highlightAll();
   }
 }

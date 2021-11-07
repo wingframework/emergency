@@ -86,10 +86,14 @@ import { RoutesModule } from './routes/routes.module';
 import { SharedModule } from './shared/shared.module';
 import { STWidgetModule } from './shared/st-widget/st-widget.module';
 import { Observable } from 'rxjs';
+import { MarkdownModule } from 'ngx-markdown';
+import { DragulaModule } from 'ng2-dragula';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
+    DragulaModule.forRoot(),
+    MarkdownModule.forRoot(),
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
@@ -107,4 +111,4 @@ import { Observable } from 'rxjs';
   providers: [...LANG_PROVIDES, ...INTERCEPTOR_PROVIDES, ...I18NSERVICE_PROVIDES, ...APPINIT_PROVIDES],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

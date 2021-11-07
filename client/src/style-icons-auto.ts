@@ -53,10 +53,14 @@ import {
   UserOutline,
   WeiboCircleOutline,
   SlackSquareOutline,
-  AntDesignOutline
+  AntDesignOutline,
+  CodeOutline,
+  QuestionCircleFill
 } from '@ant-design/icons-angular/icons';
 
 export const ICONS_AUTO = [
+  QuestionCircleFill,
+  CodeOutline,
   AlipayCircleOutline,
   ApiOutline,
   AppstoreOutline,

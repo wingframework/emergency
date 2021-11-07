@@ -11,6 +11,7 @@
  */
 
 export interface AddStaffDto { 
+    enable?: number;
     groupname?: string;
     job?: string;
     nickname?: string;

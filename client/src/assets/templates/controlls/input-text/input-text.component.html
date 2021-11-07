@@ -1,0 +1,20 @@
+<nz-form-item>
+    {{#if (isNotFalse label) }}
+    <nz-form-label [nzRequired]="{{required}}" *ngIf="body.label !== false">{{ label }}
+        <ng-container *ngIf="body.labelRemark">
+            <i nz-icon nzType="question-circle" nzTheme="fill" [nzTooltipTitle]="body.labelRemark" nzTooltipPlacement="topLeft" nz-tooltip></i>
+        </ng-container>
+    </nz-form-label>
+    {{/if}}
+    <nz-form-control nzHasFeedback nzValidatingTip="校验中">
+        <div [formGroup]="formGroup">
+            <ng-container *ngIf="!body.disabled">
+                <input type="text" nz-input [nzSize]="size" [formControlName]="body.name" />
+            </ng-container>
+
+            <ng-container *ngIf="body.disabled">
+                <input type="text" nz-input [disabled]="true" [nzSize]="size" />
+            </ng-container>
+        </div>
+    </nz-form-control>
+</nz-form-item>

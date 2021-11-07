@@ -1,0 +1,14 @@
+# type: 模板类型  html,typescript,css
+# path 模板文件路径
+[[templates]]
+name = "input-text"
+type = "html"
+path = "input-text.component.html"
+[[templates]]
+name = "input-text"
+type = "ts"
+path = "input-text.component.ts"
+[[templates]]
+name = "input-text"
+type = "css"
+path = "input-text.component.css"

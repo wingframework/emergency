@@ -3,10 +3,15 @@ import { Configuration } from './configuration';
 import { HttpClient } from '@angular/common/http';
 
 
+import { DefaultService } from './api/default.service';
 import { BasicErrorControllerService } from './api/basicErrorController.service';
 import { IndexControllerService } from './api/indexController.service';
+import { MenuControllerService } from './api/menuController.service';
+import { PassportControllerService } from './api/passportController.service';
+import { RoleControllerService } from './api/roleController.service';
+import { SchedulControllerService } from './api/schedulController.service';
+import { SmsControllerService } from './api/smsController.service';
 import { StaffControllerService } from './api/staffController.service';
-import { TestControllerService } from './api/testController.service';
 import { UserControllerService } from './api/userController.service';
 
 @NgModule({
@@ -14,10 +19,15 @@ import { UserControllerService } from './api/userController.service';
   declarations: [],
   exports:      [],
   providers: [
+    DefaultService,
     BasicErrorControllerService,
     IndexControllerService,
+    MenuControllerService,
+    PassportControllerService,
+    RoleControllerService,
+    SchedulControllerService,
+    SmsControllerService,
     StaffControllerService,
-    TestControllerService,
     UserControllerService ]
 })
 export class ApiModule {

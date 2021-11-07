@@ -1,3 +1,4 @@
+import { PageHeaderModule } from '@delon/abc/page-header';
 import { NzAlertModule } from 'ng-zorro-antd/alert';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzBadgeModule } from 'ng-zorro-antd/badge';
@@ -29,10 +30,15 @@ import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { NzTagModule } from 'ng-zorro-antd/tag';
 import { NzTimePickerModule } from 'ng-zorro-antd/time-picker';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
+import { NzTreeModule } from 'ng-zorro-antd/tree';
 import { NzTreeSelectModule } from 'ng-zorro-antd/tree-select';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
+import { NzLayoutModule } from 'ng-zorro-antd/layout';
 
 export const SHARED_ZORRO_MODULES = [
+  NzLayoutModule,
+  PageHeaderModule,
+  NzTreeModule,
   NzTreeSelectModule,
   NzTagModule,
   NzButtonModule,

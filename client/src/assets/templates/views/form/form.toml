@@ -1,0 +1,12 @@
+[[templates]]
+name = "form"
+type = "html"
+path = "form.component.html"
+[[templates]]
+name = "form"
+type = "ts"
+path = "form.component.ts"
+[[templates]]
+name = "form"
+type = "css"
+path = "form.component.css"

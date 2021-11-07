@@ -1,0 +1,12 @@
+[[templates]]
+name = "page"
+type = "html"
+path = "page.component.html"
+[[templates]]
+name = "page"
+type = "ts"
+path = "page.component.ts"
+[[templates]]
+name = "page"
+type = "css"
+path = "page.component.css"

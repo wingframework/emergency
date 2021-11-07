@@ -1,9 +1,12 @@
 <div style="text-align: right;">
+    <!-- <amis-page [body]="{title:'页面'}"></amis-page> -->
+    <amis-dynamic [body]="{title:'页面',type:'page'}"></amis-dynamic>
     <toml-case-menu [nodes]="nodes" *ngIf="nodes" (OnSelectNode)="selectNode($event)"></toml-case-menu>
 </div>
 
 
-<nz-tabset>
+
+<nz-tabset (nzSelectChange)="refreshHighlight()">
     <nz-tab [nzTitle]="title">
         <ng-container *ngIf="body">
 
@@ -14,7 +17,7 @@
                 </nz-radio-group>
             </div>
 
-            <dynamic-ui [body]="body" *ngIf="uiType==UiType.AntDeisgn"></dynamic-ui>
+            <!-- <dynamic-ui [body]="body" *ngIf="uiType==UiType.AntDeisgn"></dynamic-ui> -->
             <amis-sample [json]="body" *ngIf="uiType===UiType.Amis"></amis-sample>
         </ng-container>
 
@@ -23,10 +26,15 @@
         <div class="source-code-block">
             <i nz-icon nzType="copy" class="copy-icon" nzTheme="outline" (click)="copyText(toml)"></i>
             <pre class="toml">
+                <code class="language-toml">
 {{toml}}
+                </code>
         </pre>
         </div>
 
     </nz-tab>
-    <nz-tab nzTitle="源码"></nz-tab>
+    <nz-tab nzTitle="源码">
+        <component-tree [json]="body" *ngIf="body"></component-tree>
+
+    </nz-tab>
 </nz-tabset>

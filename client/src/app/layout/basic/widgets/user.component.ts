@@ -2,13 +2,13 @@ import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { DA_SERVICE_TOKEN, ITokenService } from '@delon/auth';
 import { SettingsService, User } from '@delon/theme';
-import { UserControllerService } from 'src/shared/api';
+import { PassportControllerService, UserControllerService } from 'src/shared/api';
 
 @Component({
   selector: 'header-user',
   template: `
     <div class="alain-default__nav-item d-flex align-items-center px-sm" nz-dropdown nzPlacement="bottomRight" [nzDropdownMenu]="userMenu">
-      <nz-avatar [nzSrc]=" user.avatar || '/assets/tmp/img/avatar.jpg'  " nzSize="small" class="mr-sm"></nz-avatar>
+      <nz-avatar [nzSrc]="user.avatar || '/assets/tmp/img/avatar.jpg'" nzSize="small" class="mr-sm"></nz-avatar>
       {{ user.username }}
     </div>
     <nz-dropdown-menu #userMenu="nzDropdownMenu">
@@ -39,20 +39,21 @@ export class HeaderUserComponent {
   // get user(): User {
   //   return this.settings.user;
   // }
-  user: User = {}
+  user: User = {};
   async ngOnInit() {
-    let rtn = await this.userControllerService.getUserInfoUsingGET().toPromise();
+    let rtn = await this.passport.getUserInfoUsingGET().toPromise();
     if (rtn.ok) {
       this.user = rtn.data as User;
     }
-
   }
 
   constructor(
     private settings: SettingsService,
     private router: Router,
     @Inject(DA_SERVICE_TOKEN) private tokenService: ITokenService,
-    private userControllerService: UserControllerService) { }
+    private userControllerService: UserControllerService,
+    private passport: PassportControllerService
+  ) {}
 
   logout(): void {
     this.tokenService.clear();

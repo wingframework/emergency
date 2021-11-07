@@ -16,7 +16,5 @@ export class TomlCaseMenuComponent {
     }
   }
 
-  ngOnInit(): void {
-    // mock async
-  }
+  ngOnInit(): void {}
 }

@@ -9,7 +9,7 @@ import { environment } from '@env/environment';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzTabChangeEvent } from 'ng-zorro-antd/tabs';
 import { finalize } from 'rxjs/operators';
-import { UserControllerService } from 'src/shared/api';
+import { PassportControllerService, UserControllerService } from 'src/shared/api';
 
 @Component({
   selector: 'passport-login',
@@ -31,16 +31,18 @@ export class UserLoginComponent implements OnDestroy {
     private startupSrv: StartupService,
     private http: _HttpClient,
     private cdr: ChangeDetectorRef,
-    private userService: UserControllerService,
+    private passport: PassportControllerService,
     private msgService: NzMessageService
   ) {
     this.form = fb.group({
-      userName: [null, [Validators.required,
-        //Validators.pattern(/^(admin|user)$/)
-      ]],
-      password: [null, [Validators.required,
-        // Validators.pattern(/^(ng\-alain\.com)$/)
-      ]],
+      userName: [
+        null,
+        [
+          Validators.required
+          //Validators.pattern(/^(admin|user)$/)
+        ]
+      ],
+      password: [null, [Validators.required]],
       mobile: [null, [Validators.required, Validators.pattern(/^1\d{10}$/)]],
       captcha: [null, [Validators.required]],
       remember: [true]
@@ -95,7 +97,6 @@ export class UserLoginComponent implements OnDestroy {
   // #endregion
 
   async submit() {
-
     this.error = '';
     if (this.type === 0) {
       this.userName.markAsDirty();
@@ -114,8 +115,11 @@ export class UserLoginComponent implements OnDestroy {
         return;
       }
     }
-    let rtn = await this.userService.userLoginUsingPOST({ username: this.userName.value, password: this.password.value }).toPromise();
-    if (!rtn.ok) { this.msgService.error(rtn.msg as string); return };
+    let rtn = await this.passport.loginUserUsingPOST({ username: this.userName.value, password: this.password.value }).toPromise();
+    if (!rtn.ok) {
+      this.msgService.error(rtn.msg as string);
+      return;
+    }
     // 默认配置中对所有HTTP请求都会强制 [校验](https://ng-alain.com/auth/getting-started) 用户 Token
     // 然一般来说登录请求不需要校验，因此可以在请求URL加上：`/login?_allow_anonymous=true` 表示不触发用户 Token 校验
     // this.loading = true;

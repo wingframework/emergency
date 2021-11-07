@@ -1,0 +1,13 @@
+.code-switch {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+    color: lightseagreen;
+}
+
+.code-block {
+    background: rgb(68, 68, 68);
+    color: #fdff;
+    padding: 20px;
+}

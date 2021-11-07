@@ -1,0 +1,17 @@
+<div class="sidebar">
+    <ng-container *ngFor="let item of groups">
+        <div>
+            <div>
+
+            </div>
+            <div>{{item.title}}</div>
+            <ul class="widget-list" dragula="form-item" [(dragulaModel)]='item.controls' id="left">
+                <li *ngFor="let control of item.controls" id="left">
+                    <a class="item">
+                        <i class="iconfont icon-input"></i> {{control.text}}
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </ng-container>
+</div>

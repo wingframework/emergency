@@ -11,12 +11,13 @@
  */
 
 export interface Staff { 
+    enable?: number;
     groupname?: string;
     id?: number;
     job?: string;
     nickname?: string;
     phonenumber?: string;
-    state?: boolean;
+    status?: boolean;
     userid?: string;
     username?: string;
 }

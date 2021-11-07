@@ -1,0 +1,8 @@
+<page-header [title]="title">
+</page-header>
+
+<nz-card>
+    {{#if expand}} {{> (dynamic file='html' body=body) }} {{/if}} {{#unless expand}}
+    <dynamic-ui [body]="body"></dynamic-ui>
+    {{/unless}}
+</nz-card>
